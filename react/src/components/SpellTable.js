@@ -9,6 +9,13 @@ export default function SpellTable() {
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
+    /**
+     * TODO:
+     * Check to see if the data is in localStorage first
+     * if not, run the query
+     * 
+     * TODO: we need to also fetch SCHOOL and LEVEL
+     */
     fetch('https://www.dnd5eapi.co/api/spells')
     // fetch('https://api.open5e.com/spells')
       .then(result => result.json())
@@ -31,7 +38,7 @@ export default function SpellTable() {
       Header: 'Spell Name',
       accessor: 'name',
       Cell: ({ row }) => (<Link to={`/spells/${row.values.index}`}>{row.values.name}</Link>)
-    }
+    },
   ]
 
   return (
