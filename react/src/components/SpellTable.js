@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import Loading from './Loading';
 import Table from './Table';
@@ -29,6 +30,7 @@ export default function SpellTable() {
     {
       Header: 'Spell Name',
       accessor: 'name',
+      Cell: ({ row }) => (<Link to={`/spells/${row.values.index}`}>{row.values.name}</Link>)
     }
   ]
 
