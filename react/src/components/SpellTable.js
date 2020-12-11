@@ -21,15 +21,21 @@ export default function SpellTable() {
     return <Loading />
   }
 
+  const columns = [
+    {
+      Header: 'Key',
+      accessor: 'index',
+    },
+    {
+      Header: 'Spell Name',
+      accessor: 'name',
+    }
+  ]
+
   return (
     <Layout>
       <h1>D&D 5e Spells</h1>
-      <ul>
-        {spells.map(spell => (
-          <li key={spell.index}>{spell.name}</li>
-        ))}
-      </ul>
-      {/* <Table columns={columns} data={data} /> */}
+      <Table columns={columns} data={spells} />
     </Layout>
   )
 }
