@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -37,7 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set up routes
-app.use('/', spellRouter);
+const API_base = '/api/v1';
+app.use(`${API_base}/spells`, spellRouter);
 
 // start the server!
 const server = app.listen(PORT,

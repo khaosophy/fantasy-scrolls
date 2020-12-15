@@ -18,7 +18,7 @@ We're going to start with the D&D 5e API.
 # TODO
 
 1. Set up APIs to fetch data
-   * fetch all spells
+   * fetch all spells (modify what data is returned)
    * fetch single spell
 1. Set up React Table to query spells
    * search

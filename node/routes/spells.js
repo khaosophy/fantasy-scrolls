@@ -1,10 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { 
+  getSpells,
+  getSpell,
+} = require('../controllers/spells');
 
-router.get('/', function(req, res, next) {
-  return res.status(200).json({
-    data: 'hello world',
-  })
-});
+router.route('/')
+  .get(getSpells);
+
+router.route('/:id')
+  .get(getSpell);
 
 module.exports = router;
