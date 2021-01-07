@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const SpellSchema = new mongoose.Schema({
+  slug: String,
   name: {
     type: String,
     required: [true, 'Please include a name for the spell.'],
