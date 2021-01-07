@@ -13,8 +13,6 @@ export default function SpellTable() {
      * TODO:
      * Check to see if the data is in localStorage first
      * if not, run the query
-     * 
-     * TODO: we need to also fetch SCHOOL and LEVEL
      */
     fetch('http://localhost:5000/api/v1/spells')
       .then(result => result.json())
@@ -37,17 +35,17 @@ export default function SpellTable() {
     {
       Header: 'Name',
       accessor: 'name',
-      Cell: ({ row }) => (<Link to={`/spells/${row.values.slug}`}>{row.values.name}</Link>)
+      Cell: ({ row }) => (<Link to={`/spells/${row.original.slug}`}>{row.original.name}</Link>)
     },
     {
       Header: 'Concentration',
       accessor: 'concentration',
-      Cell: ({ row }) => (row.values.concentration ? 'Yes' : 'No'),
+      Cell: ({ row }) => (row.original.concentration ? 'Yes' : 'No'),
     },
     {
       Header: 'Ritual',
       accessor: 'ritual',
-      Cell: ({ row }) => (row.values.ritual ? 'Yes' : 'No'),
+      Cell: ({ row }) => (row.original.ritual ? 'Yes' : 'No'),
     },
     {
       Header: 'School',
