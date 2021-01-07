@@ -34,6 +34,7 @@ async function getSpellData(id) {
     const response = await axios.get(`${API_base}/spells/${id}`);
     // console.log(response.data);
     return {
+      slug: response.data.index,
       name: response.data.name,
       description: response.data.desc,
       higher_level: response.data.higher_level,
@@ -48,7 +49,7 @@ async function getSpellData(id) {
       attack_type: response.data.attack_type,
       // todo: damage
       school: response.data.school.name,
-      classes: response.data.classes.name,
+      classes: response.data.classes.map(c => c.name),
     };
   } catch (err) {
     console.error(`Error: ${err.message}`);
@@ -97,4 +98,7 @@ if(process.argv[2] === '-i' || process.argv[2] === '--import') {
   importData().then(() => process.exit());
 } else if (process.argv[2] === '-d' || process.argv[2] === '--delete') {
   deleteData().then(() => process.exit());
+} else {
+  console.log(colors.red('Invalid command.'))
+  process.exit();
 }
