@@ -53,7 +53,7 @@ export default function SpellTable() {
       Header: 'School',
       accessor: 'school',
     },
-  ]
+  ];
 
   return (
     <Layout>
@@ -61,6 +61,12 @@ export default function SpellTable() {
       <Table
         columns={columns}
         data={spells}
+        initialState={{
+          sortBy: [{
+            id: 'name',
+            desc: false,
+          }]
+        }}
         isStriped
         isHoverable
         isNarrow

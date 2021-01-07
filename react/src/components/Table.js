@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { useColumnOrder, useSortBy, useTable } from 'react-table';
+import { useSortBy, useTable } from 'react-table';
 
 export default function Table(props) {
-  const { columns, data } = props;
+  const { columns, data, initialState } = props;
   const {
     getTableProps,
     getTableBodyProps,
@@ -12,7 +12,9 @@ export default function Table(props) {
   } = useTable(
     { 
       columns,
-      data
+      data,
+      initialState,
+      disableSortRemove: true,
     },
     useSortBy,
   );
@@ -67,6 +69,7 @@ export default function Table(props) {
 Table.propTypes = {
   columns: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
+  initialState: PropTypes.object,
   isBordered: PropTypes.bool,
   isStriped: PropTypes.bool,
   isFullWidth: PropTypes.bool,
