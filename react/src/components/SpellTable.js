@@ -16,11 +16,11 @@ export default function SpellTable() {
      * 
      * TODO: we need to also fetch SCHOOL and LEVEL
      */
-    fetch('https://www.dnd5eapi.co/api/spells')
-    // fetch('https://api.open5e.com/spells')
+    fetch('http://localhost:5000/api/v1/spells')
       .then(result => result.json())
       .then(data => {
-        setSpells(data.results);
+        const { data: spells } = data;
+        setSpells(spells);
         setIsLoaded(true);
       })
   }, []);
@@ -31,20 +31,41 @@ export default function SpellTable() {
 
   const columns = [
     {
-      Header: 'Key',
-      accessor: 'index',
+      Header: 'Level',
+      accessor: 'level',
     },
     {
-      Header: 'Spell Name',
+      Header: 'Name',
       accessor: 'name',
-      Cell: ({ row }) => (<Link to={`/spells/${row.values.index}`}>{row.values.name}</Link>)
+      Cell: ({ row }) => (<Link to={`/spells/${row.values.slug}`}>{row.values.name}</Link>)
+    },
+    {
+      Header: 'Concentration',
+      accessor: 'concentration',
+      Cell: ({ row }) => (row.values.concentration ? 'Yes' : 'No'),
+    },
+    {
+      Header: 'Ritual',
+      accessor: 'ritual',
+      Cell: ({ row }) => (row.values.ritual ? 'Yes' : 'No'),
+    },
+    {
+      Header: 'School',
+      accessor: 'school',
     },
   ]
 
   return (
     <Layout>
-      <h1>D&D 5e Spells</h1>
-      <Table columns={columns} data={spells} />
+      <h1 className="title">D&D 5e Spells</h1>
+      <Table
+        columns={columns}
+        data={spells}
+        isStriped
+        isHoverable
+        isNarrow
+        isFullWidth
+      />
     </Layout>
   )
 }

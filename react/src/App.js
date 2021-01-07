@@ -8,9 +8,12 @@ import SpellTable from './components/SpellTable';
 import SpellDescription from './components/SpellDescription';
 
 function App() {
-  /*<div className="App" style={{ maxWidth: '800px', margin: 'auto' }}>
-      <SpellTable />
-    </div> */
+  /**
+   * TODO:
+   * - need to add slug to spell table (and database)
+   * - create filter/search controls (UI only; no logic yet)
+   * - improved loading
+   */
   return (
     <Router>
       <div style={{ maxWidth: '800px', margin: 'auto' }}>

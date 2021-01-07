@@ -1,7 +1,9 @@
 export default function Layout(props) {
-  return (<>
-    <header></header>
-    <main>{props.children}</main>
-    <footer></footer>
-  </>)
+  return (
+    <div className="container">
+      <header></header>
+      <main>{props.children}</main>
+      <footer></footer>
+    </div>
+  )
 }
