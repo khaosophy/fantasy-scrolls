@@ -10,6 +10,7 @@ import SpellDescription from './components/SpellDescription';
 function App() {
   /**
    * TODO:
+   * - SORT BY options
    * - need to add slug to spell table (and database)
    * - create filter/search controls (UI only; no logic yet)
    * - improved loading

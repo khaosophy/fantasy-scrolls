@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useTable } from 'react-table';
+import { useColumnOrder, useSortBy, useTable } from 'react-table';
 
 export default function Table(props) {
   const { columns, data } = props;
@@ -9,7 +9,13 @@ export default function Table(props) {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+  } = useTable(
+    { 
+      columns,
+      data
+    },
+    useSortBy,
+  );
 
   let tableClasses = ['table'];
   if(props.isStriped) tableClasses.push('is-striped');
@@ -25,8 +31,15 @@ export default function Table(props) {
           {headerGroups.map(headerGroup => (
             <tr className="tr" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th className="th" {...column.getHeaderProps()}>
+                <th className="th" {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
+                  <span>
+                    {column.isSorted
+                      ? !column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
                 </th>
               ))}
             </tr>
