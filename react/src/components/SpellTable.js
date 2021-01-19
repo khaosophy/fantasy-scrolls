@@ -1,30 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import Loading from './Loading';
+import SpellFilters from './SpellFilters';
 import Table from './Table';
 
 export default function SpellTable() {
-  const [spells, setSpells] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false);
+  // app state
+  const { isLoading, isError, error, data } = useQuery('getAllSpells', () => fetch('http://localhost:5000/api/v1/spells').then(res => res.json()));
   
-  useEffect(() => {
-    /**
-     * TODO:
-     * Check to see if the data is in localStorage first
-     * if not, run the query
-     */
-    fetch('http://localhost:5000/api/v1/spells')
-      .then(result => result.json())
-      .then(data => {
-        const { data: spells } = data;
-        setSpells(spells);
-        setIsLoaded(true);
-      })
-  }, []);
+  // filter state
+  const [search, setSearch] = useState('');
 
-  if(!isLoaded) {
+  if(isLoading) {
     return <Loading />
+  }
+
+  if(isError) {
+    return <span> Error: {error.message}</span>
   }
 
   const columns = [
@@ -56,9 +50,13 @@ export default function SpellTable() {
   return (
     <Layout>
       <h1 className="title">D&D 5e Spells</h1>
+      <SpellFilters
+        search={search}
+        setSearch={setSearch}
+      />
       <Table
         columns={columns}
-        data={spells}
+        data={data.data}
         initialState={{
           sortBy: [{
             id: 'name',
