@@ -1,11 +1,15 @@
-const ScrollPreview = () => (
+type PreviewProps = {
+  message: string,
+}
+
+const ScrollPreview = (props: PreviewProps) => (
   <div style={{ 
     height: '400px',
     aspectRatio: '1 / 1',
     backgroundColor: 'red',
     marginLeft: '3rem',
   }}>
-    {/* placeholder */}
+    {props.message}
   </div>
 );
 
