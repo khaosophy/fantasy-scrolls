@@ -1,6 +1,9 @@
 type FormProps = {
   message: string,
   onMessageChange: React.Dispatch<React.SetStateAction<string>>,
+
+  background: string,
+  onBackgroundChange: React.Dispatch<React.SetStateAction<string>>,
 }
 
 const ScrollForm = (props: FormProps) => (
@@ -26,9 +29,16 @@ const ScrollForm = (props: FormProps) => (
 
     <div className="mb-3">
       <label htmlFor="bgSelector">Background</label>
-      <select id="bgSelector" className="form-select">
-        <option value="1">Background 1</option>
-        <option value="2">Background 2</option>
+      <select 
+        id="bgSelector"
+        className="form-select"
+        onChange={(e) => props.onBackgroundChange(e.target.value)}
+        defaultValue="Y1.png"
+      >
+        <option value="R1.png">Red</option>
+        <option value="Y1.png">Yellow</option>
+        <option value="G1.png">Green</option>
+        <option value="B1.png">Blue</option>
       </select>
     </div>
 
