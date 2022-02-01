@@ -1,0 +1,38 @@
+Seth Tomlinson
+Perfect Parchment
+END USER LICENSE AGREEMENT
+
+PLEASE READ CAREFULLY. This End Use License Agreement (hereafter “Agreement”) document is a legal agreement between you, or, if you represent a legal entity, that legal entity (hereinafter “You”) and Seth Tomlinson (hereinafter  the “Creator”), and is applicable to the Perfect Parchment texture pack (hereinafter the “Product”) that is accompanied by this Agreement.
+
+By downloading or installing the Product, You agree to be bound by the
+terms of this Agreement. If You do not agree to the terms of this Agreement, do not
+download, install, or use the Font Software.
+
+By downloading or installing the Font Software You agree to be bound by the
+terms of this Agreement. If You do not agree to the terms of this Agreement, do not
+download, install, or use the Font Software.
+
+GRANTS OF LICENSE AND RESTRICTIONS
+
+1. Grant of License.
+Upon download or payment in full (if applicable), the Creator grants You a non-exclusive license to use the Product for Your own personal or commercial uses according to the terms of this Agreement.
+
+2. Restriction of Use.
+You are not allowed to copy, distribute or make the Product available to third parties so that they can use it for their purposes. You are not allowed
+(i) to disseminate or make available the Product or parts of it through any online service or a file sharing platform
+(ii) to sublicense the Product to third parties so that they can use it for their own personal or commercial purposes
+
+3. Credit.
+Upon using the contents of the Product in any capacity for a published work, You agree to give credit to the Creator as follows: “Parchment texture by Seth Tomlinson” or some acceptable variation thereof.
+
+4. Backup.
+You may make backup copies of the Product for archival purposes only, provided that You retain exclusive custody and control over such copies. Any backup copy of the Product must contain the same copyright, trademark, and other proprietary information as the original.
+
+5. Modifications.
+You may modify, adapt, reverse engineer, disassemble, and alter to suit the purposes of Your personal or commercial project.
+
+6. General provisions
+You agree to comply with the terms of this Agreement. This Agreement may only be modified in writing by the Creator. If any part of this agreement is found void and unenforceable, it will not affect the validity of the balance of the Agreement, which shall remain valid and enforceable according to its terms.
+
+Seth Tomlinson
+February 2019
