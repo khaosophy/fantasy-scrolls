@@ -5,6 +5,7 @@ import ScrollPreview  from './components/ScrollPreview';
 function App() {
   const [message, setMessage] = useState('');
   const [background, setBackground] = useState('');
+  const [font, setFont] = useState('');
   
   return (
     <div className="App">
@@ -18,10 +19,14 @@ function App() {
 
           background={background}
           onBackgroundChange={setBackground}
+
+          font={font}
+          onFontChange={setFont}
         />
         <ScrollPreview
           message={message}
           background={background}
+          font={font}
         />
       </div>
     </div>

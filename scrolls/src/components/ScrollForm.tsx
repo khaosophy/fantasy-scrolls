@@ -4,6 +4,9 @@ type FormProps = {
 
   background: string,
   onBackgroundChange: React.Dispatch<React.SetStateAction<string>>,
+
+  font: string,
+  onFontChange: React.Dispatch<React.SetStateAction<string>>,
 }
 
 const ScrollForm = (props: FormProps) => (
@@ -21,9 +24,15 @@ const ScrollForm = (props: FormProps) => (
 
     <div className="mb-3">
       <label htmlFor="fontSelector">Font</label>
-      <select id="fontSelector" className="form-select">
-        <option value="1">Font 1</option>
-        <option value="2">Font 2</option>
+      <select
+        id="fontSelector"
+        className="form-select"
+        onChange={(e) => props.onFontChange(e.target.value)}
+      >
+        <option value="script-1">Script 1</option>
+        <option value="script-2">Script 2</option>
+        <option value="blocky-1">Blocky 1</option>
+        <option value="blocky-2">Blocky 2</option>
       </select>
     </div>
 
