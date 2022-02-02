@@ -28,6 +28,7 @@ const ScrollForm = (props: FormProps) => (
         id="fontSelector"
         className="form-select"
         onChange={(e) => props.onFontChange(e.target.value)}
+        value={props.font}
       >
         <option value="script-1">Script 1</option>
         <option value="script-2">Script 2</option>
@@ -42,7 +43,7 @@ const ScrollForm = (props: FormProps) => (
         id="bgSelector"
         className="form-select"
         onChange={(e) => props.onBackgroundChange(e.target.value)}
-        defaultValue="Y1.png"
+        value={props.background}
       >
         <option value="R1.png">Red</option>
         <option value="Y1.png">Yellow</option>

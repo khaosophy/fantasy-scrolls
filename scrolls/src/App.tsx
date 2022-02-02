@@ -4,8 +4,8 @@ import ScrollPreview  from './components/ScrollPreview';
 
 function App() {
   const [message, setMessage] = useState('');
-  const [background, setBackground] = useState('');
-  const [font, setFont] = useState('');
+  const [background, setBackground] = useState('Y1.png');
+  const [font, setFont] = useState('script-1');
   
   return (
     <div className="App">
