@@ -12,7 +12,7 @@ function App() {
       <div className="container mt-3 mb-4">
         <h1>Fantasy Scroll Maker</h1>
       </div>
-      <div className="container d-flex">
+      <div className="container d-md-flex">
         <ScrollForm 
           message={message}
           onMessageChange={setMessage}
