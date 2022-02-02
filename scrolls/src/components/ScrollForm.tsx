@@ -34,6 +34,10 @@ const ScrollForm = (props: FormProps) => (
         <option value="script-2">Script 2</option>
         <option value="blocky-1">Blocky 1</option>
         <option value="blocky-2">Blocky 2</option>
+        <option value="fiendish">Abyssal/Infernal</option>
+        <option value="runic">Dwarvish/Gnomish/Giant</option>
+        <option value="draconic">Draconic</option>
+        <option value="rellanic">Elvish/Sylvan/Undercommon</option>
       </select>
     </div>
 

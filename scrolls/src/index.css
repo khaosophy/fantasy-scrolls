@@ -1,3 +1,39 @@
+@font-face {
+  /** 
+   * Used for the Abyssal and Infernal alphabets
+   * see class name .fiendish
+   */
+  font-family: 'Barazhad';
+  src: url('./assets/fonts/barazhad/Barazhad.otf') format('opentype');
+}
+
+@font-face {
+  /** 
+   * Used for the Dwarvish, Giant, Gnomish, Goblin, Orc, and Primordial alphabets
+   * see class name .runic
+   */
+  font-family: 'Davek';
+  src: url('./assets/fonts/davek/Davek.otf') format('opentype');
+}
+
+@font-face {
+  /** 
+   * Used for the Draconic alphabet
+   * see class name .draconic
+   */
+  font-family: 'Draconic';
+  src: url('./assets/fonts/iokharic/Iokharic.otf') format('opentype');
+}
+
+@font-face {
+  /** 
+   * Used for the Elvish, Sylvan, and Undercommon alphabets
+   * see class name .rellanic
+   */
+  font-family: 'Rellanic';
+  src: url('./assets/fonts/rellanic/Rellanic.otf') format('opentype');
+}
+
 .script-1 {
   font-family: 'Fondamento', cursive;
 }
@@ -12,4 +48,20 @@
 
 .blocky-2 {
   font-family: 'Rock Salt', cursive;
+}
+
+.fiendish {
+  font-family: 'Barazhad';
+}
+
+.runic {
+  font-family: 'Davek';
+}
+
+.draconic {
+  font-family: 'Draconic';
+}
+
+.rellanic {
+  font-family: 'Rellanic';
 }
