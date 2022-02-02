@@ -30,8 +30,8 @@ const ScrollForm = (props: FormProps) => (
         onChange={(e) => props.onFontChange(e.target.value)}
         value={props.font}
       >
-        <option value="script-1">Script 1</option>
-        <option value="script-2">Script 2</option>
+        <option value="royal">Royal</option>
+        <option value="elegant">Elegant</option>
         <option value="blocky-1">Blocky 1</option>
         <option value="blocky-2">Blocky 2</option>
         <option value="fiendish">Abyssal/Infernal</option>
