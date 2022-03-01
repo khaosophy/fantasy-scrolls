@@ -22,6 +22,7 @@ const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => (
       height: '400px',
       maxWidth: '100%',
       aspectRatio: '1 / 1',
+      whiteSpace: 'pre-wrap', // accommodate line breaks in textarea
     }}
   >
     {props.message}
