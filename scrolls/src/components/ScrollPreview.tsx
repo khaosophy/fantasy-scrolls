@@ -5,6 +5,7 @@ type PreviewProps = {
   message: string,
   background: string,
   font: string,
+  fontSize: string,
 }
 
 const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => (
@@ -23,6 +24,7 @@ const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => (
       maxWidth: '100%',
       aspectRatio: '1 / 1',
       whiteSpace: 'pre-wrap', // accommodate line breaks in textarea
+      fontSize: `${props.fontSize}px`,
     }}
   >
     {props.message}
