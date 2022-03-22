@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import './scroll-preview.css';
 
 type PreviewProps = {
-  message: string,
   background: string,
   font: string,
   fontSize: string,
@@ -23,9 +22,11 @@ const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => {
   }
 
   return (
-    <div className="d-flex mt-4">
+    <div className="d-flex mt-4 mb-3">
       <div
         ref={ref}
+        contentEditable
+        suppressContentEditableWarning
         className={classNames(
           props.font,
           'scroll-preview'
@@ -35,7 +36,7 @@ const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => {
           fontSize: `${props.fontSize}px`,
         }}
       >
-        {props.message}
+        Write your message here...
       </div>
       <div 
         className="resizer"

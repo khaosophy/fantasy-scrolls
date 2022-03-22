@@ -1,7 +1,4 @@
 type FormProps = {
-  message: string,
-  onMessageChange: React.Dispatch<React.SetStateAction<string>>,
-
   background: string,
   onBackgroundChange: React.Dispatch<React.SetStateAction<string>>,
 
@@ -24,14 +21,7 @@ const ScrollForm = (props: FormProps) => {
   return (
     <form className="flex-grow-1" onSubmit={onSubmit}>
       <div className="mb-3">
-        <label htmlFor="scrollMessage">Your Message</label>
-        <textarea
-          id="scrollMessage"
-          className="form-control" 
-          style={{ height: '8rem' }}
-          value={props.message}
-          onChange={(e) => props.onMessageChange(e.target.value)}
-        />
+        {/* scroll will go here */}
       </div>
 
       <div className="row mb-3">
