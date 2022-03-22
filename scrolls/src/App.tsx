@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from './utils/downloadImage';
 import ScrollPreview  from './components/ScrollPreview';
 
@@ -15,11 +16,18 @@ function App() {
   
   return (
     <div className="App container">
-      <h1 className="mt-3 mb-4">Fantasy Scroll Maker</h1>
+      <div className="d-flex align-items-center justify-content-between mt-3 mb-4">
+        <h1>Fantasy Scroll Maker</h1>
+        <button
+          className="btn btn-link d-flex align-items-center"
+          onClick={() => console.log('looking for help here...')}
+        >
+          How does this work?&nbsp;<InfoCircle />
+        </button>
+        {/* todo: explain how this works (and functionality, duh) */}
+      </div>
 
-      {/* todo: 1) button to show/hide controls; 2) button to explain how this works */}
       {/* todo: split up the form? the scroll no longer needs to be *in* the form. the controls can be their own component */}
-      
       <form className="flex-grow-1" onSubmit={onSubmit}>
         <ScrollPreview
           ref={scroll}
