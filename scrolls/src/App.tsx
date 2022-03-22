@@ -2,11 +2,13 @@ import { useRef, useState } from 'react';
 import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from './utils/downloadImage';
 import ScrollPreview  from './components/ScrollPreview';
+import InstructionsModal from './components/InstructionsModal';
 
 function App() {
   const [background, setBackground] = useState('Y1.png');
   const [font, setFont] = useState('royal');
   const [fontSize, setFontSize] = useState('20');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const scroll = useRef(null);
 
   const onSubmit = (event: any) => {
@@ -16,15 +18,15 @@ function App() {
   
   return (
     <div className="App container">
+      <InstructionsModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
       <div className="d-flex align-items-center justify-content-between mt-3 mb-4">
         <h1>Fantasy Scroll Maker</h1>
         <button
           className="btn btn-link d-flex align-items-center"
-          onClick={() => console.log('looking for help here...')}
+          onClick={() => setIsModalOpen(true)}
         >
           How does this work?&nbsp;<InfoCircle />
         </button>
-        {/* todo: explain how this works (and functionality, duh) */}
       </div>
 
       {/* todo: split up the form? the scroll no longer needs to be *in* the form. the controls can be their own component */}
