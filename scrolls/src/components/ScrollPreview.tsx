@@ -1,5 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import classNames from 'classnames';
+import './scroll-preview.css';
 
 type PreviewProps = {
   message: string,
@@ -8,27 +9,42 @@ type PreviewProps = {
   fontSize: string,
 }
 
-const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => (
-  <div
-    ref={ref}
-    className={classNames(
-      props.font,
-      'ms-md-5',
-      'mt-5',
-      'mt-md-0'
-    )}
-    style={{
-      backgroundImage: `url('/backgrounds/${props.background}')`,
-      padding: '2rem 1.6rem',
-      height: '400px',
-      maxWidth: '100%',
-      aspectRatio: '1 / 1',
-      whiteSpace: 'pre-wrap', // accommodate line breaks in textarea
-      fontSize: `${props.fontSize}px`,
-    }}
-  >
-    {props.message}
-  </div>
-));
+const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => {
+  const [initialPos, setInitialPos] = useState(0);
+  const [initialSize, setInitialSize] = useState(0);
+
+  const initial = (event: any) => {
+    setInitialPos(event.clientX);
+    setInitialSize(ref.current.offsetWidth);
+  }
+
+  const resize = (event: any) => {
+    ref.current.style.width = `${initialSize + (event.clientX - initialPos)}px`;
+  }
+
+  return (
+    <div className="d-flex mt-4">
+      <div
+        ref={ref}
+        className={classNames(
+          props.font,
+          'scroll-preview'
+        )}
+        style={{
+          backgroundImage: `url('/backgrounds/${props.background}')`,
+          fontSize: `${props.fontSize}px`,
+        }}
+      >
+        {props.message}
+      </div>
+      <div 
+        className="resizer"
+        draggable="true"
+        onDragStart={initial}
+        onDrag={resize}
+      />
+    </div>
+  );
+});
 
 export default ScrollPreview;

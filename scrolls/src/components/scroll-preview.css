@@ -1,0 +1,12 @@
+.scroll-preview {
+  padding: 2rem 1.6rem;
+  white-space: pre-wrap; /* accommodate line breaks in textarea */  
+}
+
+.resizer {
+  background: rgba(1, 1, 1, 0);
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid transparent;
+  cursor: col-resize;
+}

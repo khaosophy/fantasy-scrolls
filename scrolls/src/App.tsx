@@ -23,34 +23,32 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <div className="container mt-3 mb-4">
-        <h1>Fantasy Scroll Maker</h1>
-      </div>
-      <div className="container d-md-flex">
-        <ScrollForm 
-          message={message}
-          onMessageChange={setMessage}
+    <div className="App container">
+      <h1 className="mt-3 mb-4">Fantasy Scroll Maker</h1>
+      
+      <ScrollForm 
+        message={message}
+        onMessageChange={setMessage}
 
-          background={background}
-          onBackgroundChange={setBackground}
+        background={background}
+        onBackgroundChange={setBackground}
 
-          font={font}
-          onFontChange={setFont}
+        font={font}
+        onFontChange={setFont}
 
-          fontSize={fontSize}
-          onFontSizeChange={setFontSize}
+        fontSize={fontSize}
+        onFontSizeChange={setFontSize}
 
-          downloadImage={downloadImage}
-        />
-        <ScrollPreview
-          ref={scroll}
-          message={message}
-          background={background}
-          font={font}
-          fontSize={fontSize}
-        />
-      </div>
+        downloadImage={downloadImage}
+      />
+
+      <ScrollPreview
+        ref={scroll}
+        message={message}
+        background={background}
+        font={font}
+        fontSize={fontSize}
+      />
     </div>
   );
 }
