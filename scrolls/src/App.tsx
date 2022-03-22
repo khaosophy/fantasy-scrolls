@@ -1,11 +1,12 @@
 import { useRef, useState } from 'react';
-import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
+// import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from './utils/downloadImage';
 import ScrollPreview  from './components/ScrollPreview';
 // import InstructionsModal from './components/InstructionsModal';
 
 function App() {
-  const [background, setBackground] = useState('Y1.png');
+  const background = 'Y1.png';
+  // const [background, setBackground] = useState('Y1.png');
   const [font, setFont] = useState('royal');
   const [fontSize, setFontSize] = useState('20');
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,15 +32,8 @@ function App() {
 
       {/* todo: split up the form? the scroll no longer needs to be *in* the form. the controls can be their own component */}
       <form className="flex-grow-1" onSubmit={onSubmit}>
-        <ScrollPreview
-          ref={scroll}
-          background={background}
-          font={font}
-          fontSize={fontSize}
-        />
-
-        <div className="row mb-3">
-          <div className="col-6">
+      <div className="row mb-3 w-50">
+          <div className="col">
             <label htmlFor="fontSelector">Font Style</label>
             <select
               id="fontSelector"
@@ -57,7 +51,7 @@ function App() {
               <option value="rellanic">Elvish/Sylvan/Undercommon</option>
             </select>
           </div>
-          <div className="col-6">
+          <div className="col">
             <label htmlFor="fontSize">Font Size (px)</label>
             <input 
               type="number"
@@ -66,24 +60,30 @@ function App() {
               onChange={(e) => setFontSize(e.target.value)}
             />
           </div>
+          {/* <div className="col">
+            <label htmlFor="bgSelector">Background</label>
+            <select 
+              id="bgSelector"
+              className="form-select"
+              onChange={(e) => setBackground(e.target.value)}
+              value={background}
+            >
+              <option value="R1.png">Red</option>
+              <option value="Y1.png">Yellow</option>
+              <option value="G1.png">Green</option>
+              <option value="B1.png">Blue</option>
+            </select>
+          </div> */}
         </div>
+        
+        <ScrollPreview
+          ref={scroll}
+          background={background}
+          font={font}
+          fontSize={fontSize}
+        />
 
-        <div className="mb-3">
-          <label htmlFor="bgSelector">Background</label>
-          <select 
-            id="bgSelector"
-            className="form-select"
-            onChange={(e) => setBackground(e.target.value)}
-            value={background}
-          >
-            <option value="R1.png">Red</option>
-            <option value="Y1.png">Yellow</option>
-            <option value="G1.png">Green</option>
-            <option value="B1.png">Blue</option>
-          </select>
-        </div>
-
-        <button type="submit" className="btn btn-secondary">Download Image</button>
+        <button type="submit" className="mt-2 btn btn-secondary">Download Image</button>
       </form>
     </div>
   );
