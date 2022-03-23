@@ -55,6 +55,8 @@ function App() {
             <label htmlFor="fontSize">Font Size (px)</label>
             <input 
               type="number"
+              min="1"
+              max="250"
               className="form-control"
               value={fontSize}
               onChange={(e) => setFontSize(e.target.value)}
