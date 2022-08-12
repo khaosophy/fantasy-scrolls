@@ -14,7 +14,7 @@ function App() {
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const scroll = useRef(null);
 
-  const onSubmit = (event: any) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     downloadImage(scroll.current);
   }  

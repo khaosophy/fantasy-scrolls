@@ -1,19 +1,8 @@
-type FormProps = {
-  background: string,
-  onBackgroundChange: React.Dispatch<React.SetStateAction<string>>,
+import PropTypes from 'prop-types';
 
-  font: string,
-  onFontChange: React.Dispatch<React.SetStateAction<string>>,
-
-  fontSize: string,
-  onFontSizeChange: React.Dispatch<React.SetStateAction<string>>,
-
-  downloadImage: () => void,
-}
-
-const ScrollForm = (props: FormProps) => {
+const ScrollForm = (props) => {
   
-  function onSubmit(event: any) {
+  function onSubmit(event) {
     event.preventDefault();
     props.downloadImage();
   }
@@ -75,3 +64,13 @@ const ScrollForm = (props: FormProps) => {
 }
 
 export default ScrollForm;
+
+ScrollForm.propTypes = {
+  background: PropTypes.string.isRequired,
+  onBackgroundChange: PropTypes.func.isRequired,
+  font: PropTypes.string.isRequired,
+  onFontChange: PropTypes.func.isRequired,
+  fontSize: PropTypes.string.isRequired,
+  onFontSizeChange: PropTypes.func.isRequired,
+  downloadImage: PropTypes.func.isRequired,
+}

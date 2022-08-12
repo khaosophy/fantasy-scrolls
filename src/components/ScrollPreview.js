@@ -1,23 +1,18 @@
 import { forwardRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './scroll-preview.css';
 
-type PreviewProps = {
-  background: string,
-  font: string,
-  fontSize: string,
-}
-
-const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => {
+const ScrollPreview = forwardRef((props, ref) => {
   const [initialPos, setInitialPos] = useState(0);
   const [initialSize, setInitialSize] = useState(0);
 
-  const initial = (event: any) => {
+  const initial = (event) => {
     setInitialPos(event.clientX);
     setInitialSize(ref.current.offsetWidth);
   }
 
-  const resize = (event: any) => {
+  const resize = (event) => {
     ref.current.style.width = `${initialSize + (event.clientX - initialPos)}px`;
   }
 
@@ -49,3 +44,9 @@ const ScrollPreview = forwardRef((props: PreviewProps, ref: any) => {
 });
 
 export default ScrollPreview;
+
+ScrollPreview.propTypes = {
+  background: PropTypes.string.isRequired,
+  font: PropTypes.string.isRequired,
+  fontSize: PropTypes.string.isRequired,
+}
