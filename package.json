@@ -1,5 +1,5 @@
 {
-  "name": "scrolls",
+  "name": "tabletoptools",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +10,7 @@
     "@types/node": "^16.11.22",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "bootstrap": "^5.1.3",
+    "bootstrap": "^5.2.0",
     "classnames": "^2.3.1",
     "html2canvas": "^1.4.1",
     "react": "^17.0.2",
