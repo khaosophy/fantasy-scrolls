@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollMaker from './components/ScrollMaker';
+import SpellScroll from './components/SpellScroll';
 
 function App() {  
   return (<>
@@ -9,7 +10,8 @@ function App() {
     <main className="container">
       <Routes>
         <Route path="/" element={<></>} />
-        <Route path="/scroll" element={<ScrollMaker />} />
+        <Route path="/handout" element={<ScrollMaker />} />
+        <Route path="/scroll" element={<SpellScroll />} />
       </Routes>
     </main>
     <Footer />
