@@ -36,7 +36,11 @@ export default function SpellScroll() {
             <SelectField
               id="scrollLevelSelect"
               label="Select a Spell Level"
-              options={Array.from({length: 9}, (_, i) => ({ value: i+1, label: `${i + 1}` }))}
+              options={[
+                {value: 'any', label: 'Any Spell Level'},
+                {value: 0, label: 'Cantrip'},
+                ...Array.from({length: 9}, (_, i) => ({ value: i + 1, label: `${i + 1}` }))
+              ]}
             />
           </div>
         </div>
