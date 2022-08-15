@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 // import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from '../utils/downloadImage';
 import ScrollPreview  from '../components/ScrollPreview';
 // import InstructionsModal from '../components/InstructionsModal';
 
-export default function ScrollMaker() {
+export default function HandoutMaker() {
   const background = 'Y1.png';
   // const [background, setBackground] = useState('Y1.png');
   const [font, setFont] = useState('royal');
@@ -20,7 +21,10 @@ export default function ScrollMaker() {
   return (<>
       {/* <InstructionsModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} /> */}
       <div className="d-flex align-items-center justify-content-between mt-3 mb-4">
-        <h1>Fantasy Scroll Maker</h1>
+        <Helmet>
+          <title>Handout Maker</title>
+        </Helmet>
+        <h1>Handout Maker</h1>
         {/* <button
           className="btn btn-link d-flex align-items-center"
           onClick={() => setIsModalOpen(true)}

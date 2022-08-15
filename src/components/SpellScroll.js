@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
+import { Helmet } from 'react-helmet';
 import SelectField from './SelectField';
 
 export default function SpellScroll() {
@@ -24,6 +25,9 @@ export default function SpellScroll() {
   
   return (
     <div>
+      <Helmet>
+        <title>Random Spell Scroll</title>
+      </Helmet>
       <h1>Generate a Random Spell Scroll</h1>
 
       <form onSubmit={(e) => handleScrollGenerator(e)}>
