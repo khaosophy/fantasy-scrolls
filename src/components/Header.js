@@ -7,7 +7,11 @@ export default function Header() {
       href: '/',
     },
     {
-      label: 'Scroll Maker',
+      label: 'Handout Maker',
+      href: '/handout',
+    },
+    {
+      label: 'Spell Scroll',
       href: '/scroll',
     },
   ];
