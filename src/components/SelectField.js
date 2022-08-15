@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export default function SelectField(props) {
   return (
     <div className="form-floating">
-      <select id={props.id} className="form-select">
+      <select id={props.id} className="form-select" defaultValue={props.value} onChange={props.onChange}>
         {props.options.map(option => (
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
@@ -20,6 +20,8 @@ SelectField.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     label: PropTypes.string.isRequired,
   })).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
 }
