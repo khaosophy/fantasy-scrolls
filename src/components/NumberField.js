@@ -12,7 +12,6 @@ export default function NumberField(props) {
         step={props.step}
         value={props.value}
         onChange={props.onChange}
-        placeholder={props.placeholder || props.label}
         required={props.required}
         disabled={props.disabled}
       />
@@ -24,7 +23,6 @@ export default function NumberField(props) {
 NumberField.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
