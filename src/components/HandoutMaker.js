@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 // import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from '../utils/downloadImage';
+import NumberField from './NumberField';
 import ScrollPreview  from './ScrollPreview';
 import SelectField from './SelectField';
 // import InstructionsModal from '../components/InstructionsModal';
@@ -80,12 +81,11 @@ export default function HandoutMaker() {
             />
           </div>
           <div className="col">
-            <label htmlFor="fontSize">Font Size (px)</label>
-            <input 
-              type="number"
+            <NumberField
+              id="fontSize"
+              label="Font Size (px)"
               min="1"
               max="250"
-              className="form-control"
               value={fontSize}
               onChange={(e) => setFontSize(e.target.value)}
             />
