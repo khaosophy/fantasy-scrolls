@@ -2,7 +2,8 @@ import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 // import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from '../utils/downloadImage';
-import ScrollPreview  from '../components/ScrollPreview';
+import ScrollPreview  from './ScrollPreview';
+import SelectField from './SelectField';
 // import InstructionsModal from '../components/InstructionsModal';
 
 export default function HandoutMaker() {
@@ -37,22 +38,46 @@ export default function HandoutMaker() {
       <form className="flex-grow-1" onSubmit={onSubmit}>
       <div className="row mb-3 w-50">
           <div className="col">
-            <label htmlFor="fontSelector">Font Style</label>
-            <select
+            <SelectField
               id="fontSelector"
-              className="form-select"
+              label="Font Style"
               onChange={(e) => setFont(e.target.value)}
               value={font}
-            >
-              <option value="royal">Royal</option>
-              <option value="elegant">Elegant</option>
-              <option value="blocky-1">Blocky 1</option>
-              <option value="blocky-2">Blocky 2</option>
-              <option value="fiendish">Abyssal/Infernal</option>
-              <option value="runic">Dwarvish/Gnomish/Giant</option>
-              <option value="draconic">Draconic</option>
-              <option value="rellanic">Elvish/Sylvan/Undercommon</option>
-            </select>
+              options={[
+                {
+                  label: 'Royal',
+                  value: 'royal',
+                },
+                {
+                  label: 'Elegant',
+                  value: 'elegant',
+                },
+                {
+                  label: 'Blocky 1',
+                  value: 'blocky-1',
+                },
+                {
+                  label: 'Blocky 2',
+                  value: 'blocky-2',
+                },
+                {
+                  label: 'Abyssal/Infernal',
+                  value: 'fiendish',
+                },
+                {
+                  label: 'Dwarvish/Gnomish/Giant',
+                  value: 'runic',
+                },
+                {
+                  label: 'Draconic',
+                  value: 'draconic',
+                },
+                {
+                  label: 'Elvish/Sylvan/Undercommon',
+                  value: 'rellanic',
+                },
+              ]}
+            />
           </div>
           <div className="col">
             <label htmlFor="fontSize">Font Size (px)</label>
