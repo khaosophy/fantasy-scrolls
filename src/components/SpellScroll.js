@@ -42,7 +42,6 @@ export default function SpellScroll() {
 
   const [getSpells, { loading: spellsLoading, error: spellsError, data: spellData }] = useLazyQuery(GET_SPELLS);
 
-  /* todo: class filter is not working */
   const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
   if (classesLoading) return <p>Loading...</p>;
   if (classesError) return <p>Error</p>;
