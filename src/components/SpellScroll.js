@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useLazyQuery, gql } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import SelectField from './SelectField';
 
@@ -8,17 +8,35 @@ export default function SpellScroll() {
   const [role, setRole] = useState(null);
   const [isGenerated, setIsGenerated] = useState(false);
 
-  // const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
+  const GET_SPELLS = gql`
+    query Spells {
+      spells (class: {index: ${role}}, level: ${spellLevel}, limit: 500) {
+        index
+        name
+        desc
+        school {
+          name
+        }
+        level
+        classes {
+          name
+        }
+      }
+    }
+  `;
 
+  const [getSpells, { loading: spellsLoading, error: spellsError, data: spellData }] = useLazyQuery(GET_SPELLS);
+
+  /* todo: class filter is not working */
+  // const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
   // if (classesLoading) return <p>Loading...</p>;
   // if (classesError) return <p>Error</p>;
-
   // const { classes } = classesData;
 
   const handleScrollGenerator = (e) => {
-    /* todo: force a remount? */
     e.preventDefault();
     setIsGenerated(true);
+    getSpells();
   }
 
   /* todo: prevent re-rendering when form fields are updated */
@@ -73,35 +91,18 @@ export default function SpellScroll() {
         </button>
       </form>
 
-      {isGenerated && <RandomSpell role={role} level={spellLevel} />}
+      {isGenerated && (
+        <RandomSpell data={spellData} loading={spellsLoading} error={spellsError} />
+      )}
     </div>
   );
 }
 
-const RandomSpell = ({ role, level }) => {
-  /* todo: class filter is not working */
-  const GET_SPELLS = gql`
-    query Spells {
-      spells (class: {index: ${role}}, level: ${level}) {
-        index
-        name
-        desc
-        school {
-          name
-        }
-        level
-        classes {
-          name
-        }
-      }
-    }
-  `;
-
-  const { data, loading, error } = useQuery(GET_SPELLS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-
+const RandomSpell = ({data, loading, error}) => {
+  if(loading) return <p>Loading...</p>
+  if(error) return <p>Error: {error}</p>
+  if(!data) return null;
+  
   const { spells } = data;
   const spell = spells[Math.floor(Math.random() * spells.length)];
 
