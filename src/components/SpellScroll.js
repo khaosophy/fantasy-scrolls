@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLazyQuery, gql } from '@apollo/client';
+import { useQuery, useLazyQuery, gql } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import SelectField from './SelectField';
 
@@ -8,9 +8,15 @@ export default function SpellScroll() {
   const [role, setRole] = useState(null);
   const [isGenerated, setIsGenerated] = useState(false);
 
+  const spellQuery = [
+    'limit: 500',
+    `level: ${spellLevel}`,
+  ];
+  if(role) spellQuery.push(`class: "${role}"`);
+
   const GET_SPELLS = gql`
     query Spells {
-      spells (class: {index: ${role}}, level: ${spellLevel}, limit: 500) {
+      spells (${spellQuery.join(', ')}) {
         index
         name
         desc
@@ -25,13 +31,22 @@ export default function SpellScroll() {
     }
   `;
 
+  const GET_CLASSES = gql`
+    query Classes {
+      classes {
+        value: index
+        label: name
+      }
+    }
+  `
+
   const [getSpells, { loading: spellsLoading, error: spellsError, data: spellData }] = useLazyQuery(GET_SPELLS);
 
   /* todo: class filter is not working */
-  // const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
-  // if (classesLoading) return <p>Loading...</p>;
-  // if (classesError) return <p>Error</p>;
-  // const { classes } = classesData;
+  const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
+  if (classesLoading) return <p>Loading...</p>;
+  if (classesError) return <p>Error</p>;
+  const { classes } = classesData;
 
   const handleScrollGenerator = (e) => {
     e.preventDefault();
@@ -50,7 +65,7 @@ export default function SpellScroll() {
 
       <form onSubmit={(e) => handleScrollGenerator(e)}>
         <div className="row mb-2">
-          {/* <div className="col-6">
+          <div className="col-6">
             <SelectField
               id="scrollClassSelect"
               label="Select a Class"
@@ -61,7 +76,7 @@ export default function SpellScroll() {
                 ...classes,
               ]}
             />
-          </div> */}
+          </div>
           <div className="col-6">
             <SelectField
               id="scrollLevelSelect"
@@ -102,6 +117,7 @@ const RandomSpell = ({data, loading, error}) => {
   if(loading) return <p>Loading...</p>
   if(error) return <p>Error: {error}</p>
   if(!data) return null;
+  if(data.spells.length === 0) return <p>No Spells Found.</p>
   
   const { spells } = data;
   const spell = spells[Math.floor(Math.random() * spells.length)];
@@ -117,12 +133,3 @@ const RandomSpell = ({data, loading, error}) => {
     </div>
   )
 }
-
-/* const GET_CLASSES = gql`
-  query Classes {
-    classes {
-      value: index
-      label: name
-    }
-  }
-` */
