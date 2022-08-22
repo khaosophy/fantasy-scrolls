@@ -37,7 +37,7 @@ export default function HandoutMaker() {
 
       {/* todo: split up the form? the scroll no longer needs to be *in* the form. the controls can be their own component */}
       <form className="flex-grow-1" onSubmit={onSubmit}>
-      <div className="row mb-3 w-50">
+      <div className="row mb-3 w-sm-50">
           <div className="col">
             <SelectField
               id="fontSelector"

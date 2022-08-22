@@ -55,16 +55,17 @@ export default function SpellScroll() {
 
   /* todo: prevent re-rendering when form fields are updated */
   
-  return (
-    <div>
+  return (<>
+    <div className="mt-3 mb-4">
       <Helmet>
         <title>Random Spell Scroll</title>
       </Helmet>
       <h1>Generate a Random Spell Scroll</h1>
+    </div>
 
       <form onSubmit={(e) => handleScrollGenerator(e)}>
         <div className="row mb-2">
-          <div className="col-6">
+          <div className="mb-2 mb-sm-0 col-sm-6">
             <SelectField
               id="scrollClassSelect"
               label="Select a Class"
@@ -76,7 +77,7 @@ export default function SpellScroll() {
               ]}
             />
           </div>
-          <div className="col-6">
+          <div className="col-sm-6">
             <SelectField
               id="scrollLevelSelect"
               label="Select a Spell Level"
@@ -108,8 +109,7 @@ export default function SpellScroll() {
       {isGenerated && (
         <RandomSpell data={spellData} loading={spellsLoading} error={spellsError} />
       )}
-    </div>
-  );
+  </>);
 }
 
 const RandomSpell = ({data, loading, error}) => {
