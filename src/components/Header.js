@@ -13,14 +13,16 @@ export default function Header() {
     },
   ];
 
+  const breakpoint = 'sm';
+
   return (
     <header className="py-2 mb-4 border-bottom">
       <div className="container">
-        <nav className="navbar navbar-expand-sm d-flex justify-content-between">
+        <nav className={`navbar navbar-expand-${breakpoint} d-flex justify-content-between`}>
           <Link to="/" className="navbar-brand">Casper's Tabletop Tools</Link>
 
           <button
-            className="btn btn-primary-outline d-sm-none"
+            className={`btn btn-primary-outline d-${breakpoint}-none`}
             data-bs-toggle="collapse"
             data-bs-target="#mainMenu"
           >
