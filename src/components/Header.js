@@ -22,7 +22,7 @@ export default function Header() {
           <Link to="/" className="navbar-brand">Casper's Tabletop Tools</Link>
 
           <button
-            className={`btn btn-primary-outline d-${breakpoint}-none`}
+            className={`btn btn-outline-secondary d-${breakpoint}-none`}
             data-bs-toggle="collapse"
             data-bs-target="#mainMenu"
           >
