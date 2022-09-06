@@ -4,15 +4,14 @@ import { Helmet } from 'react-helmet';
 import SelectField from './SelectField';
 
 export default function SpellScroll() {
-  const [spellLevel, setSpellLevel] = useState(null);
-  const [role, setRole] = useState(null);
+  const [queryData, setQueryData] = useState({});
   const [isGenerated, setIsGenerated] = useState(false);
 
   const spellQuery = [
     'limit: 500',
-    `level: ${spellLevel}`,
+    `level: ${queryData.spellLevel}`,
   ];
-  if(role) spellQuery.push(`class: "${role}"`);
+  if(queryData.role) spellQuery.push(`class: "${queryData.role}"`);
 
   const GET_SPELLS = gql`
     query Spells {
@@ -31,29 +30,19 @@ export default function SpellScroll() {
     }
   `;
 
-  const GET_CLASSES = gql`
-    query Classes {
-      classes {
-        value: index
-        label: name
-      }
-    }
-  `
-
   const [getSpells, { loading: spellsLoading, error: spellsError, data: spellData }] = useLazyQuery(GET_SPELLS);
 
-  const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
-  if (classesLoading) return <p>Loading...</p>;
-  if (classesError) return <p>Error</p>;
-  const { classes } = classesData;
-
-  const handleScrollGenerator = (e) => {
+  const handleScrollGeneration = (e, spellLevel, role) => {
     e.preventDefault();
+    setQueryData({ spellLevel, role })
     setIsGenerated(true);
     getSpells();
   }
 
-  /* todo: prevent re-rendering when form fields are updated */
+  const handleReset = () => {
+    setQueryData({});
+    setIsGenerated(false);
+  }
   
   return (<>
     <div className="mt-3 mb-4">
@@ -63,7 +52,37 @@ export default function SpellScroll() {
       <h1>Generate a Random Spell Scroll</h1>
     </div>
 
-      <form onSubmit={(e) => handleScrollGenerator(e)}>
+    <SpellForm
+      handleSubmit={handleScrollGeneration}
+      handleReset={handleReset}
+    />
+
+    {isGenerated && (
+      <RandomSpell data={spellData} loading={spellsLoading} error={spellsError} />
+    )}
+  </>);
+}
+
+const SpellForm = ({ handleSubmit, handleReset }) => {
+  const [spellLevel, setSpellLevel] = useState(null);
+  const [role, setRole] = useState(null);
+
+  const GET_CLASSES = gql`
+    query Classes {
+      classes {
+        value: index
+        label: name
+      }
+    }
+  `;
+
+  const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
+  if (classesLoading) return <p>Loading...</p>;
+  if (classesError) return <p>Error</p>;
+  const { classes } = classesData;
+
+  return (
+    <form onSubmit={(e) => handleSubmit(e, spellLevel, role)}>
         <div className="row mb-2">
           <div className="mb-2 mb-sm-0 col-sm-6">
             <SelectField
@@ -99,17 +118,13 @@ export default function SpellScroll() {
           onClick={() => {
             setRole(null);
             setSpellLevel(null);
-            setIsGenerated(false);
+            handleReset();
           }}
         >
           Clear
         </button>
       </form>
-
-      {isGenerated && (
-        <RandomSpell data={spellData} loading={spellsLoading} error={spellsError} />
-      )}
-  </>);
+  )
 }
 
 const RandomSpell = ({data, loading, error}) => {
