@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useLazyQuery, gql } from '@apollo/client';
 import { Helmet } from 'react-helmet';
+import GET_CLASSES from '../api/getClasses';
 import SelectField from './SelectField';
 
 export default function SpellScroll() {
@@ -66,15 +67,6 @@ export default function SpellScroll() {
 const SpellForm = ({ handleSubmit, handleReset }) => {
   const [spellLevel, setSpellLevel] = useState(null);
   const [role, setRole] = useState(null);
-
-  const GET_CLASSES = gql`
-    query Classes {
-      classes {
-        value: index
-        label: name
-      }
-    }
-  `;
 
   const { data: classesData, loading: classesLoading, error: classesError } = useQuery(GET_CLASSES);
   if (classesLoading) return <p>Loading...</p>;
