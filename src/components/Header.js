@@ -11,6 +11,10 @@ export default function Header() {
       label: 'Spell Scroll',
       href: '/scroll',
     },
+    {
+      label: 'Spell Table',
+      href: '/spells',
+    },
   ];
 
   const breakpoint = 'sm';

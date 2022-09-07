@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SpellScroll from './components/SpellScroll';
 import HandoutMaker from './components/HandoutMaker';
+import SpellTable from './components/SpellTable';
 
 function App() {  
   return (<>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/handout" element={<HandoutMaker />} />
         <Route path="/scroll" element={<SpellScroll />} />
+        <Route path="/spells" element={<SpellTable />} />
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
       </Routes>
     </main>
