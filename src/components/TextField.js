@@ -10,6 +10,7 @@ export default function TextField(props) {
         onChange={props.onChange}
         required={props.required}
         disabled={props.disabled}
+        autoFocus={props.autoFocus}
       />
       <label htmlFor={props.id}>{props.label}</label>
     </div>
@@ -23,4 +24,5 @@ TextField.propTypes = {
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 }
