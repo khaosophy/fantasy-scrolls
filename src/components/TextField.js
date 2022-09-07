@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export default function TextField(props) {
   return (
     <div className="form-floating">
       <input 
         id={props.id}
-        className="form-control"
+        className={classNames(
+          "form-control",
+          props.className
+        )}
         value={props.value}
         onChange={props.onChange}
         required={props.required}
