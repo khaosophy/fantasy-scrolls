@@ -49,6 +49,8 @@ export default function SpellTable () {
               <SpellCard 
                 name={spell.name}
                 description={spell.desc}
+                level={spell.level}
+                lists={spell.classes}
               />
             </li>
           ))}
