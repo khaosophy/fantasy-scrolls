@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useQuery } from '@apollo/client';
 import TextField from './TextField';
 import GET_SPELLS from '../api/getSpells';
+import SpellCard from './SpellCard';
 
 export default function SpellTable () {
   const [searchQuery, setSearchQuery] = useState('');
@@ -42,8 +43,15 @@ export default function SpellTable () {
       </form>
 
       {(renderedList.length > 0) && (
-        <ul>
-          {renderedList.map(spell => <li key={spell.index}>{spell.name}</li>)}
+        <ul className="list-unstyled mt-3">
+          {renderedList.map((spell) => (
+            <li key={spell.index}>
+              <SpellCard 
+                name={spell.name}
+                description={spell.desc}
+              />
+            </li>
+          ))}
         </ul>
       )}
     </div>
