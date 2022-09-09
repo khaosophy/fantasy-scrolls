@@ -3,6 +3,7 @@ import { useQuery, useLazyQuery, gql } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import GET_CLASSES from '../api/getClasses';
 import SelectField from './SelectField';
+import SpellCard from './SpellCard';
 
 export default function SpellScroll() {
   const [queryData, setQueryData] = useState({});
@@ -130,13 +131,12 @@ const RandomSpell = ({data, loading, error}) => {
   const spell = spells[Math.floor(Math.random() * spells.length)];
 
   return (
-    <div className="mt-3">
-      <h3>{spell.name}</h3>
-      <div className="d-flex gap-1">
-        <span className="badge bg-info text-dark">Level {spell.level}</span>
-        {spell.classes.map(role => <span key={role.name} className="badge bg-secondary">{role.name}</span>)}
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: spell.desc }} />
-    </div>
-  )
+    <SpellCard
+      className="mt-3"
+      name={spell.name}
+      lists={spell.classes}
+      level={spell.level}
+      description={spell.desc}
+    />
+  );
 }
