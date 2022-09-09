@@ -14,6 +14,7 @@ export default function SpellScroll() {
   ];
   if(queryData.role) spellQuery.push(`class: "${queryData.role}"`);
 
+  // todo: use the getSpells file
   const GET_SPELLS = gql`
     query Spells {
       spells (${spellQuery.join(', ')}) {
