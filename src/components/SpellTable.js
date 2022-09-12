@@ -51,6 +51,7 @@ export default function SpellTable () {
                 description={spell.desc}
                 level={spell.level}
                 lists={spell.classes}
+                school={spell.school.name}
               />
             </li>
           ))}

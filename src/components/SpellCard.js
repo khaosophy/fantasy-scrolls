@@ -6,7 +6,6 @@ export default function SpellCard(props) {
    * TODO: 
    * * when a description has a list, convert to an actual list? see Conjure Animals
    * * when a description has a table, convert to an actual table? see Confusion
-   * * add school
    * * add damage info
    * * add concentration and other meta info
    */
@@ -24,6 +23,7 @@ export default function SpellCard(props) {
             `Cantrip`
           )}
         </span>
+        <span className="badge bg-danger">{props.school}</span>
         {props.lists.map(list => <span key={list.name} className="badge bg-secondary">{list.name}</span>)}
       </div>
       <div className="spell-card__description">
@@ -41,4 +41,5 @@ SpellCard.propTypes = {
   description: PropTypes.arrayOf(PropTypes.string).isRequired,
   lists: PropTypes.array.isRequired,
   level: PropTypes.number.isRequired,
+  school: PropTypes.string,
 }
