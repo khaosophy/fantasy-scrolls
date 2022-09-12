@@ -12,7 +12,7 @@ export default function Header() {
       href: '/scroll',
     },
     {
-      label: 'Spell Table',
+      label: 'Spell List',
       href: '/spells',
     },
   ];
