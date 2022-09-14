@@ -28,6 +28,13 @@ export default function SpellList () {
       </Helmet>
       <h1>Play With Magic</h1>
 
+      {/**
+        * TODO: additional filters
+        * * class list
+        * * school
+        * * level
+        * * concentration? 
+        */}
       <form onSubmit={handleSubmit}>
         <TextField
           id="spellSearchQuery"
@@ -41,8 +48,7 @@ export default function SpellList () {
       </form>
 
       {/* todo: paginate */}
-      {/* todo: no results state */}
-      {(spells.length > 0) && (
+      {(spells.length > 0) ? (
         <ul className="list-unstyled mt-3">
           {spells.map((spell) => (
             <li key={spell.index}>
@@ -57,7 +63,7 @@ export default function SpellList () {
             </li>
           ))}
         </ul>
-      )}
+      ) : <h3 className="mt-3">No spells found.</h3>}
     </div>
   </>
   )
