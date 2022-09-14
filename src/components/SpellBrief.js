@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 export default function SpellBrief(props) {
   /* todo: rename to SpellLink? */
-  console.log(props.id);
   return (
     <div className={classnames(
       'spell-brief',
