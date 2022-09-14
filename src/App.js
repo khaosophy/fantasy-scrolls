@@ -45,6 +45,14 @@ const Home = () => {
         to: '/scroll',
       },
     },
+    {
+      title: 'Spell List',
+      description: 'There are so many spells in the game! Find the one that best fits your needs.',
+      link: {
+        label: 'Browse Spells',
+        to: '/scroll',
+      },
+    },
   ]
   return (
     <div className="row">
