@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useQuery } from '@apollo/client';
 import TextField from './TextField';
@@ -7,13 +7,7 @@ import SpellBrief from './SpellBrief';
 
 export default function SpellList () {
   const [searchQuery, setSearchQuery] = useState('');
-  const [renderedList, setRenderedList] = useState([]);
-  const { loading, data } = useQuery(GET_SPELLS);
-
-  useEffect(() => {
-    if(!data) return;
-    setRenderedList(data.spells);
-  }, [data]);
+  const { loading, data, refetch } = useQuery(GET_SPELLS);
 
   if(loading) return (
     <h3>Peering through the weave...</h3>
@@ -24,8 +18,7 @@ export default function SpellList () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const filteredSpells = spells.filter(spell => spell.name.toLowerCase().includes(searchQuery.toLowerCase()))
-    setRenderedList(filteredSpells);
+    refetch({ name: searchQuery });
   }
 
   return (<>
@@ -48,13 +41,14 @@ export default function SpellList () {
       </form>
 
       {/* todo: paginate */}
-      {(renderedList.length > 0) && (
+      {/* todo: no results state */}
+      {(spells.length > 0) && (
         <ul className="list-unstyled mt-3">
-          {renderedList.map((spell) => (
+          {spells.map((spell) => (
             <li key={spell.index}>
                 <SpellBrief
                   className="mt-3"
-                  key={spell.index}
+                  id={spell.index}
                   name={spell.name}
                   level={spell.level}
                   lists={spell.classes}

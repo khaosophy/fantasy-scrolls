@@ -9,7 +9,6 @@ const GET_SPELLS = gql`
     spells (limit: 500, name: $name) {
       index
       name
-      desc
       school {
         name
       }

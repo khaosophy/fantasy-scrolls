@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 
 export default function SpellBrief(props) {
   /* todo: rename to SpellLink? */
+  console.log(props.id);
   return (
     <div className={classnames(
       'spell-brief',
       props.className,
     )}>
       <h3 className="spell-brief__title">
-        <Link to={`/spells/${props.key}`}>
+        <Link to={`/spells/${props.id}`}>
           {props.name}
         </Link>
       </h3>
@@ -31,7 +32,7 @@ export default function SpellBrief(props) {
 
 SpellBrief.propTypes = {
   className: PropTypes.string,
-  key: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   level: PropTypes.number.isRequired,
