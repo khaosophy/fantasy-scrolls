@@ -123,6 +123,7 @@ export default function SpellList () {
                   level={spell.level}
                   lists={spell.classes}
                   school={spell.school.name}
+                  concentration={spell.concentration}
                 />
             </li>
           ))}

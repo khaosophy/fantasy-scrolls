@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { FaCopyright } from 'react-icons/fa';
 
 export default function SpellCard(props) {
   /**
@@ -14,7 +15,16 @@ export default function SpellCard(props) {
       'spell-card',
       props.className,
     )}>
-      <h3 className="spell-card__title">{props.name}</h3>
+      <h3 className="spell-card__title">
+        {props.name}
+        {props.concentration ? (
+            <sup>
+              <small>
+                {' '}<FaCopyright />
+              </small>
+            </sup>
+          ) : ''}
+      </h3>
       <div className="spell-card__meta d-flex gap-1">
         <span className="badge bg-info text-dark">
           {(props.level > 0) ? (
@@ -41,5 +51,6 @@ SpellCard.propTypes = {
   description: PropTypes.arrayOf(PropTypes.string).isRequired,
   lists: PropTypes.array.isRequired,
   level: PropTypes.number.isRequired,
-  school: PropTypes.string,
+  school: PropTypes.string.isRequired,
+  concentration: PropTypes.bool.isRequired,
 }

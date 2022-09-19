@@ -9,6 +9,7 @@ const GET_SPELL = gql`
         name
       }
       level
+      concentration
       classes {
         name
       }

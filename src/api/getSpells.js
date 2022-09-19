@@ -12,6 +12,7 @@ const GET_SPELLS = gql`
       classes {
         name
       }
+      concentration
     }
   }
 `;

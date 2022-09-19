@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import { FaCopyright } from 'react-icons/fa';
 
 export default function SpellBrief(props) {
   /* todo: rename to SpellLink? */
@@ -12,6 +13,13 @@ export default function SpellBrief(props) {
       <h3 className="spell-brief__title">
         <Link to={`/spells/${props.id}`}>
           {props.name}
+          {props.concentration ? (
+            <sup>
+              <small>
+                {' '}<FaCopyright />
+              </small>
+            </sup>
+          ) : ''}
         </Link>
       </h3>
       <div className="spell-brief__meta d-flex gap-1">
@@ -35,5 +43,6 @@ SpellBrief.propTypes = {
   name: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   level: PropTypes.number.isRequired,
-  school: PropTypes.string,
+  school: PropTypes.string.isRequired,
+  concentration: PropTypes.bool.isRequired,
 }
