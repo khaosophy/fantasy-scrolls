@@ -12,6 +12,7 @@ export default function SpellList () {
   const [searchQuery, setSearchQuery] = useState('');
   const [spellSchool, setSpellSchool] = useState('');
   const [spellClass, setSpellClass] = useState('');
+  const [spellConcentration, setSpellConcentration] = useState('');
   const { loading: schoolLoading, data: schoolData } = useQuery(GET_SCHOOLS);
   const { loading: classLoading, data: classData } = useQuery(GET_CLASSES);
   const { loading: spellLoading, data: spellData, refetch } = useQuery(GET_SPELLS);
@@ -36,17 +37,30 @@ export default function SpellList () {
   }
 
   const handleReset = (e) => {
+    /* todo: not clearing inputs? */
     setSpellClass('');
     setSpellSchool('');
+    setSpellConcentration('');
     setSearchQuery('');
   }
 
   const updateResults = () => {
-    refetch({
+    /* todo: clean up */
+    let concentration;
+    if (spellConcentration === 'true') concentration = true;
+    if (spellConcentration === 'false') concentration = false;
+
+    const spellVars = {
       name: searchQuery,
       school: spellSchool ? spellSchool : null,
       class: spellClass ? spellClass : null,
-    })
+    }
+
+    if(concentration !== null) {
+      spellVars.concentration = concentration;
+    }
+
+    refetch(spellVars);
   }
 
   const handleChange = (value, type) => {
@@ -56,6 +70,9 @@ export default function SpellList () {
     }
     if (type === 'class') {
       return setSpellClass(value);
+    }
+    if (type === 'concentration') {
+      return setSpellConcentration(value);
     }
     return console.error('change request not understood');
   }
@@ -74,7 +91,7 @@ export default function SpellList () {
         */}
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <div className="mb-2 col-6">
+          <div className="mb-2 col-5">
             <SelectField
               id="spellSearchSchool"
               label="Spell School"
@@ -86,7 +103,7 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-6">
+          <div className="mb-2 col-5">
             <SelectField
               id="spellSearchClass"
               label="Class"
@@ -95,6 +112,19 @@ export default function SpellList () {
               options={[
                 {value: '', label: 'Any Class'},
                 ...classes,
+              ]}
+            />
+          </div>
+          <div className="mb-2 col-2">
+            <SelectField
+              id="spellConcentration"
+              label="Concentration?"
+              value={spellConcentration}
+              onChange={(e) => handleChange(e.target.value, 'concentration')}
+              options={[
+                {value: '', label: 'Either'},
+                {value: 'true', label: 'Yes'},
+                {value: 'false', label: 'No'},
               ]}
             />
           </div>
