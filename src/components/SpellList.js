@@ -87,7 +87,6 @@ export default function SpellList () {
       {/**
         * TODO: additional filters
         * * level
-        * * concentration? 
         */}
       <form onSubmit={handleSubmit}>
         <div className="row">
