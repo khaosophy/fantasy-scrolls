@@ -12,6 +12,7 @@ export default function SpellList () {
   const [searchQuery, setSearchQuery] = useState('');
   const [spellSchool, setSpellSchool] = useState('');
   const [spellClass, setSpellClass] = useState('');
+  const [spellLevel, setSpellLevel] = useState('');
   const [spellConcentration, setSpellConcentration] = useState('');
   const { loading: schoolLoading, data: schoolData } = useQuery(GET_SCHOOLS);
   const { loading: classLoading, data: classData } = useQuery(GET_CLASSES);
@@ -40,6 +41,7 @@ export default function SpellList () {
     /* todo: not clearing inputs? */
     setSpellClass('');
     setSpellSchool('');
+    setSpellLevel('');
     setSpellConcentration('');
     setSearchQuery('');
   }
@@ -54,6 +56,7 @@ export default function SpellList () {
       name: searchQuery,
       school: spellSchool ? spellSchool : null,
       class: spellClass ? spellClass : null,
+      level: spellLevel ? parseInt(spellLevel) : null,
     }
 
     if(concentration !== null) {
@@ -71,6 +74,9 @@ export default function SpellList () {
     if (type === 'class') {
       return setSpellClass(value);
     }
+    if (type === 'level') {
+      return setSpellLevel(value);
+    }
     if (type === 'concentration') {
       return setSpellConcentration(value);
     }
@@ -84,13 +90,9 @@ export default function SpellList () {
       </Helmet>
       <h1>Play With Magic</h1>
 
-      {/**
-        * TODO: additional filters
-        * * level
-        */}
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <div className="mb-2 col-5">
+          <div className="mb-2 col-3">
             <SelectField
               id="spellSearchSchool"
               label="Spell School"
@@ -102,7 +104,7 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-5">
+          <div className="mb-2 col-3">
             <SelectField
               id="spellSearchClass"
               label="Class"
@@ -114,7 +116,22 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-2">
+          <div className="mb-2 col-3">
+            <SelectField
+              id="spellSearchLevel"
+              label="Spell Level"
+              value={spellLevel}
+              onChange={(e) => handleChange(e.target.value, 'level')}
+              options={[
+                {value: '', label: 'Any Spell Level'},
+                ...Array.from(Array(10)).map((_, i) => {
+                  const label = (i === 0) ? 'Cantrip': `${i}`;
+                  return {value: i, label}
+                })
+              ]}
+            />
+          </div>
+          <div className="mb-2 col-3">
             <SelectField
               id="spellConcentration"
               label="Concentration?"
