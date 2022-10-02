@@ -26,6 +26,7 @@ const GET_SPELLS = gql`
         name
       }
       concentration
+      ritual
     }
   }
 `;

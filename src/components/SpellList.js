@@ -170,6 +170,7 @@ export default function SpellList () {
                   lists={spell.classes}
                   school={spell.school.name}
                   concentration={spell.concentration}
+                  ritual={spell.ritual}
                 />
             </li>
           ))}
