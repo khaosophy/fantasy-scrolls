@@ -20,6 +20,11 @@ export default function SpellDescription() {
         lists={spell.classes}
         school={spell.school.name}
         concentration={spell.concentration}
+        ritual={spell.ritual}
+        components={spell.components}
+        material={spell.material}
+        castingTime={spell.casting_time}
+        duration={spell.duration}
       />
   );
 }

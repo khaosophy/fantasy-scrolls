@@ -13,6 +13,11 @@ const GET_SPELL = gql`
       classes {
         name
       }
+      casting_time
+      duration
+      ritual
+      components
+      material
     }
   }
 `;

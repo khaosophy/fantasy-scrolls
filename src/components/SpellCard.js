@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { FaCopyright } from 'react-icons/fa';
+import { FaCopyright, FaRegistered } from 'react-icons/fa';
 
 export default function SpellCard(props) {
   /**
@@ -24,6 +24,13 @@ export default function SpellCard(props) {
               </small>
             </sup>
           ) : ''}
+        {props.ritual ? (
+          <sup>
+            <small>
+              {' '}<FaRegistered />
+            </small>
+          </sup>
+        ) : ''}
       </h3>
       <div className="spell-card__meta d-flex gap-1">
         <span className="badge bg-info text-dark">
@@ -35,6 +42,26 @@ export default function SpellCard(props) {
         </span>
         <span className="badge bg-danger">{props.school}</span>
         {props.lists.map(list => <span key={list.name} className="badge bg-secondary">{list.name}</span>)}
+      </div>
+      <div className="spell-card__details mt-3">
+        <dl>
+          {props.components && (<>
+            <dt>Components</dt>
+            <dd>{props.components.join(' ')}</dd>
+          </>)}
+          {props.material && (<>
+            <dt>Material</dt>
+            <dd>{props.material}</dd>
+          </>)}
+          {props.castingTime && (<>
+            <dt>Casting Time</dt>
+            <dd>{props.castingTime}</dd>
+          </>)}
+          {props.duration && (<>
+            <dt>Duration</dt>
+            <dd>{props.duration}</dd>
+          </>)}
+        </dl>
       </div>
       <div className="spell-card__description">
         {props.description.map((content, i) => (
@@ -53,4 +80,9 @@ SpellCard.propTypes = {
   level: PropTypes.number.isRequired,
   school: PropTypes.string.isRequired,
   concentration: PropTypes.bool.isRequired,
+  ritual: PropTypes.bool.isRequired,
+  castingTime: PropTypes.string,
+  duration: PropTypes.string,
+  components: PropTypes.arrayOf(PropTypes.string),
+  material: PropTypes.string,
 }
