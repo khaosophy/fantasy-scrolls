@@ -24,6 +24,10 @@ Ever want to quickly make up a handout to distribute to your players, like a mes
 * Draconic to represent the language of dragons (Iokharic)
 * Elvish/Sylvan/Undercommon to represent the language of various elves (Rellanic)
 
+## Spell Explorer
+
+Look through the list of magic available to players and NPCs. You can filter by spell school, spell list, spell level, and concentration. Additionally, you can use these filters to help you pick a spell at random (useful for generating a spell scroll for treasure).
+
 ## Dice Roller and Analyzer (Coming Soon)
 
 This future feature will let you roll dice in the app and determine what the average roll will be with the given configuration. You will also be able to easily compare configurations (like 2d8 vs 4d4). This will be useful for analyzing and comparing different spells or attacks.
@@ -31,11 +35,3 @@ This future feature will let you roll dice in the app and determine what the ave
 ## Treasure Generator (Coming Soon)
 
 This future feature will automatically generate treasure (either hoard treasure or individual treasure) based on the tables in the Dungeon Master's Guide.
-
-## Spell Scroll Creator (Coming Soon)
-
-Are you sick of adventures rewarding "a first level spell scroll," but leave it to you to pick the spell? This future feature will make it easy to pick a spell at random for your party. It will allow filtering by the following:
-
-* Class
-* Spell Level
-* Spell School
