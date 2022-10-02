@@ -18,6 +18,17 @@ const GET_SPELL = gql`
       ritual
       components
       material
+      range
+      damage {
+        damage_type {
+          name
+        }
+      }
+      dc {
+        type {
+          full_name
+        }
+      }
     }
   }
 `;

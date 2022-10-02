@@ -7,8 +7,6 @@ export default function SpellCard(props) {
    * TODO: 
    * * when a description has a list, convert to an actual list? see Conjure Animals
    * * when a description has a table, convert to an actual table? see Confusion
-   * * add damage info
-   * * add concentration and other meta info
    */
   return (
     <div className={classnames(
@@ -61,6 +59,18 @@ export default function SpellCard(props) {
             <dt>Duration</dt>
             <dd>{props.duration}</dd>
           </>)}
+          {props.range && (<>
+            <dt>Range</dt>
+            <dd>{props.range}</dd>
+          </>)}
+          {props.damageType && (<>
+            <dt>Damage Type</dt>
+            <dd>{props.damageType}</dd>
+          </>)}
+          {props.saveType && (<>
+            <dt>Save</dt>
+            <dd>{props.saveType}</dd>
+          </>)}
         </dl>
       </div>
       <div className="spell-card__description">
@@ -85,4 +95,7 @@ SpellCard.propTypes = {
   duration: PropTypes.string,
   components: PropTypes.arrayOf(PropTypes.string),
   material: PropTypes.string,
+  range: PropTypes.string,
+  damageType: PropTypes.string,
+  saveType: PropTypes.string,
 }
