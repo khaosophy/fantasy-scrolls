@@ -17,7 +17,7 @@ const ScrollPreview = forwardRef((props, ref) => {
   }
 
   return (
-    <div className="d-flex mt-4 mb-3">
+    <div className={props.className}>
       <div
         ref={ref}
         contentEditable
@@ -31,7 +31,7 @@ const ScrollPreview = forwardRef((props, ref) => {
           fontSize: `${props.fontSize}px`,
         }}
       >
-        Write your message here...
+        You are cordially invited to a wedding between the Prince and his betrothed.
       </div>
       <div 
         className="resizer"

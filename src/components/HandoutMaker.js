@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 // import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
@@ -10,6 +11,7 @@ import SelectField from './SelectField';
 export default function HandoutMaker() {
   const background = 'Y1.png';
   // const [background, setBackground] = useState('Y1.png');
+  const [isReadable, setIsReadable] = useState(true);
   const [font, setFont] = useState('royal');
   const [fontSize, setFontSize] = useState('20');
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,7 +20,13 @@ export default function HandoutMaker() {
   const onSubmit = (event) => {
     event.preventDefault();
     downloadImage(scroll.current);
-  }  
+  }
+
+  const handleFontChange = (value) => {
+    const isRareFont = value === 'fiendish' || value === 'runic' || value === 'draconic' || value === 'rellanic';
+    setIsReadable(!isRareFont);
+    setFont(value);
+  }
   
   return (<>
       {/* <InstructionsModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} /> */}
@@ -42,7 +50,7 @@ export default function HandoutMaker() {
             <SelectField
               id="fontSelector"
               label="Font Style"
-              onChange={(e) => setFont(e.target.value)}
+              onChange={(e) => handleFontChange(e.target.value)}
               value={font}
               options={[
                 {
@@ -79,6 +87,11 @@ export default function HandoutMaker() {
                 },
               ]}
             />
+            {!isReadable && (
+              <div className="alert alert-warning" role="alert">
+                <p className="mb-0">NOTE: The selected font does not support all characters. We are working on a solution, but in the meantime, keep an eye out for empty squares in your text.</p>
+              </div>
+            )}
           </div>
           <div className="col">
             <NumberField
@@ -105,8 +118,14 @@ export default function HandoutMaker() {
             </select>
           </div> */}
         </div>
+
+        <p className="ms-1 mb-0">Write your message here.</p>
         
         <ScrollPreview
+          className={classNames(
+            'd-flex',
+            'mb-3',
+          )}
           ref={scroll}
           background={background}
           font={font}
