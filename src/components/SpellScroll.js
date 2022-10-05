@@ -1,49 +1,26 @@
 import { useState } from 'react';
-import { useQuery, useLazyQuery, gql } from '@apollo/client';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import GET_CLASSES from '../api/getClasses';
+import GET_SPELLS from '../api/getSpells';
 import SelectField from './SelectField';
-import SpellCard from './SpellCard';
+import SpellBrief from './SpellBrief';
 
 export default function SpellScroll() {
-  const [queryData, setQueryData] = useState({});
   const [isGenerated, setIsGenerated] = useState(false);
-
-  const spellQuery = [
-    'limit: 500',
-    `level: ${queryData.spellLevel}`,
-  ];
-  if(queryData.role) spellQuery.push(`class: "${queryData.role}"`);
-
-  // todo: use the getSpells file
-  const GET_SPELLS = gql`
-    query Spells {
-      spells (${spellQuery.join(', ')}) {
-        index
-        name
-        desc
-        school {
-          name
-        }
-        level
-        classes {
-          name
-        }
-      }
-    }
-  `;
 
   const [getSpells, { loading: spellsLoading, error: spellsError, data: spellData }] = useLazyQuery(GET_SPELLS);
 
-  const handleScrollGeneration = (e, spellLevel, role) => {
+  const handleScrollGeneration = (e, spellLevel, role = null) => {
     e.preventDefault();
-    setQueryData({ spellLevel, role })
     setIsGenerated(true);
-    getSpells();
+    getSpells({ variables: {
+      class: role,
+      level: parseInt(spellLevel),
+    } });
   }
 
   const handleReset = () => {
-    setQueryData({});
     setIsGenerated(false);
   }
   
@@ -131,12 +108,15 @@ const RandomSpell = ({data, loading, error}) => {
   const spell = spells[Math.floor(Math.random() * spells.length)];
 
   return (
-    <SpellCard
+    <SpellBrief
       className="mt-3"
+      id={spell.index}
       name={spell.name}
-      lists={spell.classes}
       level={spell.level}
-      description={spell.desc}
+      lists={spell.classes}
+      school={spell.school.name}
+      concentration={spell.concentration}
+      ritual={spell.ritual}
     />
   );
 }
