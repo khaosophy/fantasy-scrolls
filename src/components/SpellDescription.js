@@ -26,8 +26,8 @@ export default function SpellDescription() {
         castingTime={spell.casting_time}
         duration={spell.duration}
         range={spell.range}
-        damageType={spell.damage.damage_type.name}
-        saveType={spell.dc.type.full_name}
+        damageType={spell.damage?.damage_type.name}
+        saveType={spell.dc?.type.full_name}
       />
   );
 }
