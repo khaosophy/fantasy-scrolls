@@ -75,7 +75,13 @@ export default function SpellCard(props) {
         </dl>
       </div>
       <div className="spell-card__description">
-        {props.description.map((content, i) => (
+        {props.description.map((content) => (
+          parse(marked.parse(content))
+        ))}
+      </div>
+      <div className="spell-card__higher-level">
+        <p className="m-0 fw-bold fst-italic">At Higher Levels</p>
+        {props.higherLevel.map(content => (
           parse(marked.parse(content))
         ))}
       </div>
@@ -99,4 +105,5 @@ SpellCard.propTypes = {
   range: PropTypes.string,
   damageType: PropTypes.string,
   saveType: PropTypes.string,
+  higherLevel: PropTypes.arrayOf(PropTypes.string),
 }

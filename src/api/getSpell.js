@@ -29,6 +29,7 @@ const GET_SPELL = gql`
           full_name
         }
       }
+      higher_level
     }
   }
 `;

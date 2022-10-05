@@ -28,6 +28,7 @@ export default function SpellDescription() {
         range={spell.range}
         damageType={spell.damage?.damage_type.name}
         saveType={spell.dc?.type.full_name}
+        higherLevel={spell.higher_level}
       />
   );
 }
