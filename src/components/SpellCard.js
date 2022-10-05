@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { marked } from 'marked';
+import parse from 'html-react-parser';
 import { FaCopyright, FaRegistered } from 'react-icons/fa';
 
 export default function SpellCard(props) {
   /**
    * TODO: 
-   * * when a description has a list, convert to an actual list? see Conjure Animals
    * * when a description has a table, convert to an actual table? see Confusion
    */
   return (
@@ -75,7 +76,7 @@ export default function SpellCard(props) {
       </div>
       <div className="spell-card__description">
         {props.description.map((content, i) => (
-          <p key={i}>{content}</p>
+          parse(marked.parse(content))
         ))}
       </div>
     </div>
