@@ -79,12 +79,14 @@ export default function SpellCard(props) {
           parse(marked.parse(content))
         ))}
       </div>
-      <div className="spell-card__higher-level">
-        <p className="m-0 fw-bold fst-italic">At Higher Levels</p>
-        {props.higherLevel.map(content => (
-          parse(marked.parse(content))
-        ))}
-      </div>
+      {props.higherLevel && (
+        <div className="spell-card__higher-level">
+          <p className="m-0 fw-bold fst-italic">At Higher Levels</p>
+          {props.higherLevel.map(content => (
+            parse(marked.parse(content))
+          ))}
+        </div>
+      )}
     </div>
   );
 }
