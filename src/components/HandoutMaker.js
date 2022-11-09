@@ -46,7 +46,7 @@ export default function HandoutMaker() {
       {/* todo: split up the form? the scroll no longer needs to be *in* the form. the controls can be their own component */}
       <form className="flex-grow-1" onSubmit={onSubmit}>
       <div className="row mb-3 w-sm-50">
-          <div className="col">
+          <div className="col-12 mb-3 col-sm-6 mb-sm-0">
             <SelectField
               id="fontSelector"
               label="Font Style"
@@ -93,7 +93,7 @@ export default function HandoutMaker() {
               </div>
             )}
           </div>
-          <div className="col">
+          <div className="col-12 col-sm-6">
             <NumberField
               id="fontSize"
               label="Font Size (px)"
