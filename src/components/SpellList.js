@@ -92,7 +92,7 @@ export default function SpellList () {
 
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <div className="mb-2 col-3">
+          <div className="mb-2 col-12 col-md-3">
             <SelectField
               id="spellSearchSchool"
               label="Spell School"
@@ -104,7 +104,7 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-3">
+          <div className="mb-2 col-12 col-md-3">
             <SelectField
               id="spellSearchClass"
               label="Class"
@@ -116,7 +116,7 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-3">
+          <div className="mb-2 col-12 col-md-3">
             <SelectField
               id="spellSearchLevel"
               label="Spell Level"
@@ -131,7 +131,7 @@ export default function SpellList () {
               ]}
             />
           </div>
-          <div className="mb-2 col-3">
+          <div className="mb-2 col-12 col-md-3">
             <SelectField
               id="spellConcentration"
               label="Concentration?"
