@@ -1,4 +1,5 @@
 import { Routes, Route, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SpellScroll from './components/SpellScroll';
@@ -56,6 +57,9 @@ const Home = () => {
   ]
   return (
     <div className="row">
+      <Helmet>
+        <title>Casper's Tabletop Tools</title>
+      </Helmet>
       {content.map((card, i) => (
         <div className="col-md-6 col-xl-4 mb-4" key={i}>
           <div className="card">
