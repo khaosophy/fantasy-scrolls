@@ -87,6 +87,7 @@ export default function SpellList () {
     <div className="mt-3 mb-4">
       <Helmet>
         <title>Spell List</title>
+        <meta name="description" content="There are so many spells in Dungeons & Dragons 5e! Find the one that best fits your needs." />
       </Helmet>
       <h1>Play With Magic</h1>
 
