@@ -33,6 +33,7 @@ export default function HandoutMaker() {
       <div className="d-flex align-items-center justify-content-between mt-3 mb-4">
         <Helmet>
           <title>Handout Maker</title>
+          <meta name="description" content="Have a note or something you want to share with your players? Create it here, with various fonts useful for various occasions." />
         </Helmet>
         <h1>Handout Maker</h1>
         {/* <button

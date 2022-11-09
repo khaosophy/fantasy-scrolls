@@ -28,6 +28,7 @@ export default function SpellScroll() {
     <div className="mt-3 mb-4">
       <Helmet>
         <title>Random Spell Scroll</title>
+        <meta name="description" content="Need to pick a random spell from the D&D 5e spell list? This tool will let you do just that! Very useful for things like generating a spell scroll." />
       </Helmet>
       <h1>Generate a Random Spell Scroll</h1>
     </div>

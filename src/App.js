@@ -29,6 +29,7 @@ function App() {
 export default App;
 
 const Home = () => {
+  // todo: use this content throughout the site... avoid repetition. see helmet descriptions on internal pages
   const content = [
     {
       title: 'Handout Maker',
@@ -48,7 +49,7 @@ const Home = () => {
     },
     {
       title: 'Spell List',
-      description: 'There are so many spells in the game! Find the one that best fits your needs.',
+      description: 'There are so many spells in Dungeons & Dragons 5e! Find the one that best fits your needs.',
       link: {
         label: 'Browse Spells',
         to: '/spells',
@@ -59,6 +60,7 @@ const Home = () => {
     <div className="row">
       <Helmet>
         <title>Casper's Tabletop Tools</title>
+        <meta name="description" content="A suite of tools to help players and dungeon masters get organized." />
       </Helmet>
       {content.map((card, i) => (
         <div className="col-md-6 col-xl-4 mb-4" key={i}>
