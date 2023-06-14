@@ -3,12 +3,16 @@ import { Helmet } from 'react-helmet';
 import { useQuery } from '@apollo/client';
 import GET_MONSTERS from '../api/getMonsters';
 import MonsterTypes from '../api/static/monsterTypes';
+import ChallengeRatings from '../api/static/challengeRatings';
 import TextField from './TextField';
 import SelectField from './SelectField';
 
 export default function MonsterList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [monsterType, setMonsterType] = useState('');
+  const [minCR, setMinCR] = useState('');
+  const [maxCR, setMaxCR] = useState('');
+
   const { loading, data, refetch } = useQuery(GET_MONSTERS);
   
   if(loading) return (<h3>On the hunt for monsters...</h3>);
@@ -31,7 +35,7 @@ export default function MonsterList() {
 
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-5">
             <TextField 
               label="Look up a monster"
               id="monsterSearchQuery"
@@ -41,7 +45,33 @@ export default function MonsterList() {
               autoFocus
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-2">
+            <SelectField
+              id="monsterSearchMinCR"
+              label="Min CR"
+              className="mb-2"
+              value={minCR}
+              onChange={(e) => setMinCR(e.target.value)}
+              options={[
+                { value: '', label: 'Any CR' },
+                ...ChallengeRatings.map((cr) => ({ value: cr, label: cr })),
+              ]}
+            />
+          </div>
+          <div className="col-md-2">
+            <SelectField
+              id="monsterSearchMaxCR"
+              label="Max CR"
+              className="mb-2"
+              value={maxCR}
+              onChange={(e) => setMaxCR(e.target.value)}
+              options={[
+                { value: '', label: 'Any CR' },
+                ...ChallengeRatings.map((cr) => ({ value: cr, label: cr })),
+              ]}
+            />
+          </div>
+          <div className="col-md-3">
             <SelectField 
               id="monsterSearchType"
               label="Monster Type"
