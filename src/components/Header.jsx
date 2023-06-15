@@ -15,6 +15,10 @@ export default function Header() {
       label: 'Spell List',
       href: '/spells',
     },
+    {
+      label: 'Monster List',
+      href: '/monsters',
+    }
   ];
 
   const breakpoint = 'sm';
