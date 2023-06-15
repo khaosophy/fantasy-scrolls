@@ -22,6 +22,10 @@ export default function MonsterList() {
     refetch({ 
       name: searchQuery,
       type: monsterType,
+      challenge_rating: {
+        lte: parseFloat(maxCR),
+        gte: parseFloat(minCR),
+      }
     });
   }
 
@@ -54,7 +58,7 @@ export default function MonsterList() {
               onChange={(e) => setMinCR(e.target.value)}
               options={[
                 { value: '', label: 'Any CR' },
-                ...ChallengeRatings.map((cr) => ({ value: cr, label: cr })),
+                ...ChallengeRatings.map(({ value, label }) => ({ value, label })),
               ]}
             />
           </div>
@@ -67,7 +71,7 @@ export default function MonsterList() {
               onChange={(e) => setMaxCR(e.target.value)}
               options={[
                 { value: '', label: 'Any CR' },
-                ...ChallengeRatings.map((cr) => ({ value: cr, label: cr })),
+                ...ChallengeRatings.map(({ value, label }) => ({ value, label })),
               ]}
             />
           </div>
