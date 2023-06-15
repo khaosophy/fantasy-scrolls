@@ -7,6 +7,7 @@ import HandoutMaker from './components/HandoutMaker';
 import SpellList from './components/SpellList';
 import SpellDescription from './components/SpellDescription';
 import MonsterList from './components/MonsterList';
+import MonsterDescription from './components/MonsterDescription';
 
 function App() {  
   return (<>
@@ -20,7 +21,10 @@ function App() {
           <Route index element={<SpellList />} />
           <Route path=":spell" element={<SpellDescription />} />
         </Route>
-        <Route path="/monsters" element={<MonsterList />} />
+        <Route path="/monsters">
+          <Route index element={<MonsterList />} />
+          <Route path=":monster" element={<MonsterDescription />} />
+        </Route>
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
       </Routes>
     </main>

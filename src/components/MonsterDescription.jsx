@@ -10,8 +10,10 @@ export default function MonsterDescription() {
 
   if(!data) return false;
   const { monster } = data;
+  console.log(monster);
 
-  return (
+  return (<>
     <h3>{monster.name}</h3>
-  );
+    <p>Details on this page are coming soon.</p>
+  </>);
 }
