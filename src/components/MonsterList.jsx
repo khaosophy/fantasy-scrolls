@@ -6,6 +6,8 @@ import MonsterTypes from '../api/static/monsterTypes';
 import ChallengeRatings from '../api/static/challengeRatings';
 import TextField from './TextField';
 import SelectField from './SelectField';
+import MonsterBrief from './MonsterBrief';
+import { capitalize } from '../utils/text-utils';
 
 export default function MonsterList() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,7 +86,7 @@ export default function MonsterList() {
               onChange={(e) => setMonsterType(e.target.value)}
               options={[
                 { value: '', label: 'Any Type' },
-                ...MonsterTypes.map((type) => ({ value: type, label: type.charAt(0).toUpperCase() + type.toLowerCase().slice(1) })),
+                ...MonsterTypes.map((type) => ({ value: type, label: capitalize(type) })),
               ]}
             />
           </div>
@@ -97,7 +99,14 @@ export default function MonsterList() {
         <ul className="list-unstyled mt-3">
           {data.monsters.map((monster) => (
             <li key={monster.index}>
-              <h2>{monster.name}</h2>
+              <MonsterBrief
+                className="mt-3"
+                id={monster.index}
+                name={monster.name}
+                type={monster.type}
+                speed={monster.speed}
+                cr={monster.challenge_rating}
+              />
             </li>
           ))}
         </ul>

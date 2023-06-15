@@ -21,9 +21,7 @@ const GET_MONSTERS = gql`
         burrow
         climb
         fly
-        hover
         swim
-        walk
       }
     }
   }
