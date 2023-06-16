@@ -80,6 +80,18 @@ export default function MonsterDescription() {
     {/* todo: senses */}
     {/* todo: langauges and the rest */}
 
+    {/* Special Abilities */}
+    <ul className="list-unstyled">
+      {monster.special_abilities.map(ability => (
+        <li key={ability.name}>
+          <p>
+            <strong>{ability.name}. </strong>
+            {ability.desc}
+          </p>
+        </li>
+      ))}
+    </ul>
+
     <h4>Actions</h4>
     <ul className="list-unstyled">
       {monster.actions.map(action => (
