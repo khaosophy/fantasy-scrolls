@@ -127,11 +127,37 @@ export default function MonsterDescription() {
         <dd>{monster.charisma}</dd>
       </div>
     </dl>
-
-    {/* todo: vulnerabilities & resistances */}
     
     <dl>
       {renderSkillsAndSaves()}
+
+      {monster.damage_vulnerabilities.length > 0 && (<>
+        <dt>Damage Vulnerabilities</dt>
+        <dd>{monster.damage_vulnerabilities.map(vulnerability => capitalize(vulnerability))}</dd>
+      </>)}
+
+      {monster.damage_resistances.length > 0 && (<>
+        <dt>Damage Resistances</dt>
+        <dd>{capitalize(monster.damage_resistances.join(', '))}</dd>
+      </>)}
+      
+      {monster.damage_immunities.length > 0 && (<>
+        <dt>Damage Immunities</dt>
+        <dd>{capitalize(monster.damage_immunities.join(', '))}</dd>
+      </>)}
+
+      {monster.condition_immunities.length > 0 && (<>
+        <dt>Condition Immunities</dt>
+        <dd>
+          {monster.condition_immunities.map((immunity, i) => (
+            (i === 0) 
+              ? `${immunity.name}, `
+              : (i < monster.condition_immunities.length - 1)
+                ? `${immunity.name.toLowerCase()}, `
+                : `${immunity.name.toLowerCase()}`
+          ))}
+        </dd>
+      </>)}
 
       <dt>Senses</dt>
       <dd>{renderSenses()}</dd>
