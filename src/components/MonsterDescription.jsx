@@ -13,6 +13,73 @@ export default function MonsterDescription() {
   const { monster } = data;
   console.log(monster);
 
+  const renderSenses = () => {
+    const senses = Object.keys(monster.senses)
+      .map(key => ({ type: key, value: monster.senses[key] }))
+      .filter(sense => sense.value !== null && sense.type !== 'passive_perception' && sense.type !== '__typename');
+    return [
+      ...senses.map((sense, i) => `${capitalize(sense.type)} ${sense.value}, `),
+      `Passive Perception ${monster.senses.passive_perception}`,
+    ]
+  }
+
+  const renderSkillsAndSaves = () => {
+    let skills = [];
+    let savingThrows = [];
+
+    const manipulateLabel = (string) => {
+      return string.split(': ')[1];
+    }
+
+    monster.proficiencies.forEach(({ proficiency, value }) => {
+      if(proficiency.type === 'SAVING_THROWS') {
+        savingThrows.push({ name: manipulateLabel(proficiency.name), value });
+      }
+      if(proficiency.type === 'SKILLS') {
+        skills.push({ name: manipulateLabel(proficiency.name), value });
+      }
+    })
+
+    return (<>
+      {savingThrows.length > 0 && (<>
+        <dt>Saving Throws</dt>
+        <dd>{savingThrows.map((save, i) => (
+          i < savingThrows.length - 1
+            ? `${save.name} +${save.value}, `
+            : `${save.name} +${save.value}`
+        ))}</dd>
+      </>)}
+
+      {skills.length > 0 && (<>
+        <dt>Skills</dt>
+        <dd>{skills.map((skill, i) => (
+          i < skills.length - 1
+            ? `${skill.name} +${skill.value}, `
+            : `${skill.name} +${skill.value}`
+        ))}</dd>
+      </>)}
+    </>)
+  }
+
+  const renderSpeed = () => {
+    const nonWalkSpeeds = Object.keys(monster.speed)
+      .map(key => ({ type: key, value: monster.speed[key] }))
+      .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename');
+
+    return (<>
+      <dt>Speed</dt>
+      <dd>
+        {monster.speed.walk}
+        {nonWalkSpeeds.length > 0 && ', '}
+        {nonWalkSpeeds.map((speed, i) => (
+          (i < nonWalkSpeeds.length - 1)
+            ? `${speed.type} ${speed.value}, `
+            : `${speed.type} ${speed.value}`
+        ))}
+      </dd>
+    </>)
+  }
+
   return (<>
     <h3>{monster.name}</h3>
     {/* todo: monster alignment */}
@@ -26,17 +93,7 @@ export default function MonsterDescription() {
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
 
-      <dt>Speed</dt>
-      <dd>
-        {monster.speed.walk}
-        {Object.keys(monster.speed)
-          .map(key => ({ type: key, value: monster.speed[key] }))
-          .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename')
-          .map((speed, i) => {
-            if(i === 0) return `, ${speed.type} ${speed.value}`
-            return `${speed.type} ${speed.value}`
-          })}
-        </dd>
+      {renderSpeed()}
     </dl>
 
     <dl className="d-flex gap-3">
@@ -74,11 +131,59 @@ export default function MonsterDescription() {
         <dd>{monster.charisma}</dd>
       </div>
     </dl>
+    
+    <dl>
+      {renderSkillsAndSaves()}
 
-    {/* todo: skills / saving throws*/}
-    {/* todo: vulnerabilities & resistances */}
-    {/* todo: senses */}
-    {/* todo: langauges and the rest */}
+      {monster.damage_vulnerabilities.length > 0 && (<>
+        <dt>Damage Vulnerabilities</dt>
+        <dd>{monster.damage_vulnerabilities.map(vulnerability => capitalize(vulnerability))}</dd>
+      </>)}
+
+      {monster.damage_resistances.length > 0 && (<>
+        <dt>Damage Resistances</dt>
+        <dd>{capitalize(monster.damage_resistances.join(', '))}</dd>
+      </>)}
+      
+      {monster.damage_immunities.length > 0 && (<>
+        <dt>Damage Immunities</dt>
+        <dd>{capitalize(monster.damage_immunities.join(', '))}</dd>
+      </>)}
+
+      {monster.condition_immunities.length > 0 && (<>
+        <dt>Condition Immunities</dt>
+        <dd>
+          {monster.condition_immunities.map((immunity, i) => (
+            (i === 0) 
+              ? `${immunity.name}, `
+              : (i < monster.condition_immunities.length - 1)
+                ? `${immunity.name.toLowerCase()}, `
+                : `${immunity.name.toLowerCase()}`
+          ))}
+        </dd>
+      </>)}
+
+      <dt>Senses</dt>
+      <dd>{renderSenses()}</dd>
+
+      {monster.languages && (<>
+        <dt>Languages</dt>
+        <dd>{monster.languages}</dd>
+      </>)}
+
+      <div className="d-flex gap-5">
+        <div>
+          <dt>Challenge Rating</dt>
+          {/* todo: format XP with comma */}
+          {/* todo: format low challenge ratings to their factional value */}
+          <dd>{monster.challenge_rating} ({monster.xp} XP)</dd>
+        </div>
+        {/* todo: proficency bonus? see DndBeyond. it may not be in the API though, and it's not present on Roll20*/}
+      </div>
+    </dl>
+
+    {/* todo: legendary actions */}
+    {/* todo: style sections more appropriately (i.e. red borders or something) */}
 
     {/* Special Abilities */}
     <ul className="list-unstyled">
