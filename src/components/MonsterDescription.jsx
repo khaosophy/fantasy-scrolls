@@ -145,11 +145,14 @@ export default function MonsterDescription() {
       <div className="d-flex gap-5">
         <div>
           <dt>Challenge Rating</dt>
+          {/* todo: format XP with comma */}
           <dd>{monster.challenge_rating} ({monster.xp} XP)</dd>
         </div>
         {/* todo: proficency bonus? see DndBeyond. it may not be in the API though, and it's not present on Roll20*/}
       </div>
     </dl>
+
+    {/* todo: legendary actions */}
 
     {/* Special Abilities */}
     <ul className="list-unstyled">
