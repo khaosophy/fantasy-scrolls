@@ -26,9 +26,17 @@ export default function MonsterDescription() {
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_dice})</dd>
 
-      {/* todo: multiple speeds */}
       <dt>Speed</dt>
-      <dd>{monster.speed.walk}</dd>
+      <dd>
+        {monster.speed.walk}
+        {Object.keys(monster.speed)
+          .map(key => ({ type: key, value: monster.speed[key] }))
+          .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename')
+          .map((speed, i) => {
+            if(i === 0) return `, ${speed.type} ${speed.value}`
+            return `${speed.type} ${speed.value}`
+          })}
+        </dd>
     </dl>
 
     <dl className="d-flex gap-3">
