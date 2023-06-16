@@ -74,5 +74,22 @@ export default function MonsterDescription() {
         <dd>{monster.charisma}</dd>
       </div>
     </dl>
+
+    {/* todo: skills / saving throws*/}
+    {/* todo: vulnerabilities & resistances */}
+    {/* todo: senses */}
+    {/* todo: langauges and the rest */}
+
+    <h4>Actions</h4>
+    <ul className="list-unstyled">
+      {monster.actions.map(action => (
+        <li key={action.name}>
+          <p>
+            <strong>{action.name}. </strong>
+            {action.desc}
+          </p>
+        </li>
+      ))}
+    </ul>
   </>);
 }
