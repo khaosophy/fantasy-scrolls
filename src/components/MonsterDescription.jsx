@@ -183,6 +183,7 @@ export default function MonsterDescription() {
     </dl>
 
     {/* todo: legendary actions */}
+    {/* todo: style sections more appropriately (i.e. red borders or something) */}
 
     {/* Special Abilities */}
     <ul className="list-unstyled">
