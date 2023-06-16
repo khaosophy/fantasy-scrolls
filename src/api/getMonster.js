@@ -418,13 +418,6 @@ const GET_MONSTER = gql`
           index
           name
           type
-          races {
-            index
-            name
-            ability_bonuses {
-              bonus
-            }
-          }
         }
         value
       }
