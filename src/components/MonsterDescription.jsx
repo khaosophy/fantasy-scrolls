@@ -41,19 +41,23 @@ export default function MonsterDescription() {
     })
 
     return (<>
-      <dt>Saving Throws</dt>
-      <dd>{savingThrows.map((save, i) => (
-        i < savingThrows.length - 1
-          ? `${save.name} +${save.value}, `
-          : `${save.name} +${save.value}`
-      ))}</dd>
+      {savingThrows.length > 0 && (<>
+        <dt>Saving Throws</dt>
+        <dd>{savingThrows.map((save, i) => (
+          i < savingThrows.length - 1
+            ? `${save.name} +${save.value}, `
+            : `${save.name} +${save.value}`
+        ))}</dd>
+      </>)}
 
-      <dt>Skills</dt>
-      <dd>{skills.map((skill, i) => (
-        i < skills.length - 1
-          ? `${skill.name} +${skill.value}, `
-          : `${skill.name} +${skill.value}`
-      ))}</dd>
+      {skills.length > 0 && (<>
+        <dt>Skills</dt>
+        <dd>{skills.map((skill, i) => (
+          i < skills.length - 1
+            ? `${skill.name} +${skill.value}, `
+            : `${skill.name} +${skill.value}`
+        ))}</dd>
+      </>)}
     </>)
   }
 
