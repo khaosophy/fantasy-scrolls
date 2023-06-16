@@ -58,6 +58,25 @@ export default function MonsterDescription() {
     </>)
   }
 
+  const renderSpeed = () => {
+    const nonWalkSpeeds = Object.keys(monster.speed)
+      .map(key => ({ type: key, value: monster.speed[key] }))
+      .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename');
+
+    return (<>
+      <dt>Speed</dt>
+      <dd>
+        {monster.speed.walk}
+        {nonWalkSpeeds.length > 0 && ', '}
+        {nonWalkSpeeds.map((speed, i) => (
+          (i < nonWalkSpeeds.length - 1)
+            ? `${speed.type} ${speed.value}, `
+            : `${speed.type} ${speed.value}`
+        ))}
+      </dd>
+    </>)
+  }
+
   return (<>
     <h3>{monster.name}</h3>
     {/* todo: monster alignment */}
@@ -71,17 +90,7 @@ export default function MonsterDescription() {
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
 
-      <dt>Speed</dt>
-      <dd>
-        {monster.speed.walk}
-        {Object.keys(monster.speed)
-          .map(key => ({ type: key, value: monster.speed[key] }))
-          .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename')
-          .map((speed, i) => {
-            if(i === 0) return `, ${speed.type} ${speed.value}`
-            return `${speed.type} ${speed.value}`
-          })}
-        </dd>
+      {renderSpeed()}
     </dl>
 
     <dl className="d-flex gap-3">
