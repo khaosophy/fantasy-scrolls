@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import GET_MONSTER from '../api/getMonster';
+import { capitalize } from '../utils/text-utils';
 
 export default function MonsterDescription() {
   const { monster: index } = useParams();
@@ -14,6 +15,93 @@ export default function MonsterDescription() {
 
   return (<>
     <h3>{monster.name}</h3>
-    <p>Details on this page are coming soon.</p>
+    {/* todo: monster alignment */}
+    <p>{capitalize(monster.size)} {capitalize(monster.type)}</p>
+
+    <dl>
+      {/* todo: AC is an array... what are some cases where it has more than one? */}
+      <dt>Armor Class</dt>
+      <dd>{monster.armor_class[0].value}</dd>
+
+      <dt>Hit Points</dt>
+      <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
+
+      <dt>Speed</dt>
+      <dd>
+        {monster.speed.walk}
+        {Object.keys(monster.speed)
+          .map(key => ({ type: key, value: monster.speed[key] }))
+          .filter(speed => speed.value !== null && speed.type !== 'walk' && speed.type !== '__typename')
+          .map((speed, i) => {
+            if(i === 0) return `, ${speed.type} ${speed.value}`
+            return `${speed.type} ${speed.value}`
+          })}
+        </dd>
+    </dl>
+
+    <dl className="d-flex gap-3">
+      {/**
+       * todo: modifiers
+       * these aren't in the API. I'll have to calculate them myself.
+       */}
+      <div className="text-center">
+        <dt>Str</dt>
+        <dd>{monster.strength}</dd>
+      </div>
+
+      <div className="text-center">
+        <dt>Dex</dt>
+        <dd>{monster.dexterity}</dd>
+      </div>
+
+      <div className="text-center">
+        <dt>Con</dt>
+        <dd>{monster.constitution}</dd>
+      </div>
+
+      <div className="text-center">
+        <dt>Int</dt>
+        <dd>{monster.intelligence}</dd>
+      </div>
+
+      <div className="text-center">
+        <dt>Wis</dt>
+        <dd>{monster.wisdom}</dd>
+      </div>
+
+      <div className="text-center">
+        <dt>Cha</dt>
+        <dd>{monster.charisma}</dd>
+      </div>
+    </dl>
+
+    {/* todo: skills / saving throws*/}
+    {/* todo: vulnerabilities & resistances */}
+    {/* todo: senses */}
+    {/* todo: langauges and the rest */}
+
+    {/* Special Abilities */}
+    <ul className="list-unstyled">
+      {monster.special_abilities.map(ability => (
+        <li key={ability.name}>
+          <p>
+            <strong>{ability.name}. </strong>
+            {ability.desc}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <h4>Actions</h4>
+    <ul className="list-unstyled">
+      {monster.actions.map(action => (
+        <li key={action.name}>
+          <p>
+            <strong>{action.name}. </strong>
+            {action.desc}
+          </p>
+        </li>
+      ))}
+    </ul>
   </>);
 }
