@@ -31,28 +31,40 @@ export default function MonsterDescription() {
       <dd>{monster.speed.walk}</dd>
     </dl>
 
-    <dl>
+    <dl className="d-flex gap-3">
       {/**
        * todo: modifiers
        * these aren't in the API. I'll have to calculate them myself.
        */}
-      <dt>Str</dt>
-      <dd>{monster.strength}</dd>
+      <div className="text-center">
+        <dt>Str</dt>
+        <dd>{monster.strength}</dd>
+      </div>
 
-      <dt>Dex</dt>
-      <dd>{monster.dexterity}</dd>
+      <div className="text-center">
+        <dt>Dex</dt>
+        <dd>{monster.dexterity}</dd>
+      </div>
 
-      <dt>Con</dt>
-      <dd>{monster.constitution}</dd>
+      <div className="text-center">
+        <dt>Con</dt>
+        <dd>{monster.constitution}</dd>
+      </div>
 
-      <dt>Int</dt>
-      <dd>{monster.intelligence}</dd>
+      <div className="text-center">
+        <dt>Int</dt>
+        <dd>{monster.intelligence}</dd>
+      </div>
 
-      <dt>Wis</dt>
-      <dd>{monster.wisdom}</dd>
+      <div className="text-center">
+        <dt>Wis</dt>
+        <dd>{monster.wisdom}</dd>
+      </div>
 
-      <dt>Cha</dt>
-      <dd>{monster.charisma}</dd>
+      <div className="text-center">
+        <dt>Cha</dt>
+        <dd>{monster.charisma}</dd>
+      </div>
     </dl>
   </>);
 }
