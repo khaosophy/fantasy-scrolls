@@ -13,6 +13,16 @@ export default function MonsterDescription() {
   const { monster } = data;
   console.log(monster);
 
+  const renderSenses = () => {
+    const senses = Object.keys(monster.senses)
+      .map(key => ({ type: key, value: monster.senses[key] }))
+      .filter(sense => sense.value !== null && sense.type !== 'passive_perception' && sense.type !== '__typename');
+    return [
+      ...senses.map((sense, i) => `${capitalize(sense.type)} ${sense.value}, `),
+      `Passive Perception ${monster.senses.passive_perception}`,
+    ]
+  }
+
   return (<>
     <h3>{monster.name}</h3>
     {/* todo: monster alignment */}
@@ -77,8 +87,17 @@ export default function MonsterDescription() {
 
     {/* todo: skills / saving throws*/}
     {/* todo: vulnerabilities & resistances */}
-    {/* todo: senses */}
-    {/* todo: langauges and the rest */}
+
+    
+    <dl>
+      <dt>Senses</dt>
+      <dd>{renderSenses()}</dd>
+
+      {monster.languages && (<>
+        <dt>Languages</dt>
+        <dd>{monster.languages}</dd>
+      </>)}
+    </dl>
 
     {/* Special Abilities */}
     <ul className="list-unstyled">
