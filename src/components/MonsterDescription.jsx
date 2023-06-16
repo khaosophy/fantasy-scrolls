@@ -24,7 +24,7 @@ export default function MonsterDescription() {
       <dd>{monster.armor_class[0].value}</dd>
 
       <dt>Hit Points</dt>
-      <dd>{monster.hit_points} ({monster.hit_dice})</dd>
+      <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
 
       <dt>Speed</dt>
       <dd>
