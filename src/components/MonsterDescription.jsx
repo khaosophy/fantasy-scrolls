@@ -23,6 +23,41 @@ export default function MonsterDescription() {
     ]
   }
 
+  const renderSkillsAndSaves = () => {
+    console.log(monster.proficiencies);
+    let skills = [];
+    let savingThrows = [];
+
+    const manipulateLabel = (string) => {
+      return string.split(': ')[1];
+    }
+
+    monster.proficiencies.forEach(({ proficiency, value }) => {
+      if(proficiency.type === 'SAVING_THROWS') {
+        savingThrows.push({ name: manipulateLabel(proficiency.name), value });
+      }
+      if(proficiency.type === 'SKILLS') {
+        skills.push({ name: manipulateLabel(proficiency.name), value });
+      }
+    })
+
+    return (<>
+      <dt>Saving Throws</dt>
+      <dd>{savingThrows.map((save, i) => (
+        i < savingThrows.length - 1
+          ? `${save.name} +${save.value}, `
+          : `${save.name} +${save.value}`
+      ))}</dd>
+
+      <dt>Skills</dt>
+      <dd>{skills.map((skill, i) => (
+        i < skills.length - 1
+          ? `${skill.name} +${skill.value}, `
+          : `${skill.name} +${skill.value}`
+      ))}</dd>
+    </>)
+  }
+
   return (<>
     <h3>{monster.name}</h3>
     {/* todo: monster alignment */}
@@ -85,11 +120,11 @@ export default function MonsterDescription() {
       </div>
     </dl>
 
-    {/* todo: skills / saving throws*/}
     {/* todo: vulnerabilities & resistances */}
-
     
     <dl>
+      {renderSkillsAndSaves()}
+
       <dt>Senses</dt>
       <dd>{renderSenses()}</dd>
 
