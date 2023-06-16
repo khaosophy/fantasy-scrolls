@@ -175,6 +175,7 @@ export default function MonsterDescription() {
         <div>
           <dt>Challenge Rating</dt>
           {/* todo: format XP with comma */}
+          {/* todo: format low challenge ratings to their factional value */}
           <dd>{monster.challenge_rating} ({monster.xp} XP)</dd>
         </div>
         {/* todo: proficency bonus? see DndBeyond. it may not be in the API though, and it's not present on Roll20*/}
