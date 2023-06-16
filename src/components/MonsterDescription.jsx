@@ -24,7 +24,6 @@ export default function MonsterDescription() {
   }
 
   const renderSkillsAndSaves = () => {
-    console.log(monster.proficiencies);
     let skills = [];
     let savingThrows = [];
 
