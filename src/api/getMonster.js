@@ -95,10 +95,6 @@ const GET_MONSTER = gql`
         armor {
           index
           name
-          cost {
-            quantity
-            unit
-          }
           desc
           equipment_category {
             index

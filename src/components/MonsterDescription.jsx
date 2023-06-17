@@ -185,16 +185,18 @@ export default function MonsterDescription() {
     {/* todo: style sections more appropriately (i.e. red borders or something) */}
 
     {/* Special Abilities */}
-    <ul className="list-unstyled">
-      {monster.special_abilities.map(ability => (
-        <li key={ability.name}>
-          <p>
-            <strong>{ability.name}. </strong>
-            {ability.desc}
-          </p>
-        </li>
-      ))}
-    </ul>
+    {monster.special_abilities && (<>
+      <ul className="list-unstyled">
+        {monster.special_abilities.map(ability => (
+          <li key={ability.name}>
+            <p>
+              <strong>{ability.name}. </strong>
+              {ability.desc}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </>)}
 
     <h4>Actions</h4>
     <ul className="list-unstyled">
@@ -208,7 +210,7 @@ export default function MonsterDescription() {
       ))}
     </ul>
 
-    {monster.legendary_actions.length > 0 && (<>
+    {monster.legendary_actions && (<>
       <h4>Legendary Actions</h4>
       <ul className="list-unstyled">
         {monster.legendary_actions.map(action => (
