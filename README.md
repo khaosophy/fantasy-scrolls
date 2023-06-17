@@ -28,6 +28,10 @@ Ever want to quickly make up a handout to distribute to your players, like a mes
 
 Look through the list of magic available to players and NPCs. You can filter by spell school, spell list, spell level, and concentration. Additionally, you can use these filters to help you pick a spell at random (useful for generating a spell scroll for treasure).
 
+## Monster Manual
+
+Quickly look up a monster or filter by certain aspects like type or challenge rating. The list view also has movement types (e.g. swim) for quick reference, useful for druids looking up wild shape.
+
 ## Dice Roller and Analyzer (Coming Soon)
 
 This future feature will let you roll dice in the app and determine what the average roll will be with the given configuration. You will also be able to easily compare configurations (like 2d8 vs 4d4). This will be useful for analyzing and comparing different spells or attacks.
