@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import GET_MONSTER from '../api/getMonster';
 import { capitalize } from '../utils/text-utils';
-import { formatInteger } from '../utils/number-utils';
+import { formatInteger, formatChallengeRating } from '../utils/number-utils';
 
 export default function MonsterDescription() {
   const { monster: index } = useParams();
@@ -175,8 +175,7 @@ export default function MonsterDescription() {
       <div className="d-flex gap-5">
         <div>
           <dt>Challenge Rating</dt>
-          {/* todo: format low challenge ratings to their factional value */}
-          <dd>{monster.challenge_rating} ({formatInteger(monster.xp)} XP)</dd>
+          <dd>{formatChallengeRating(monster.challenge_rating)} ({formatInteger(monster.xp)} XP)</dd>
         </div>
         {/* todo: proficency bonus? see DndBeyond. it may not be in the API though, and it's not present on Roll20*/}
       </div>
