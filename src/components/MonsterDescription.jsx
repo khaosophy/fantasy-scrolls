@@ -14,6 +14,11 @@ export default function MonsterDescription() {
   const { monster } = data;
   console.log(monster);
 
+  const modifierFromAbilityScore = (abilityScore) => {
+    const mod = Math.floor((abilityScore - 10) / 2);
+    return mod >= 0 ? `+${mod}` : mod;
+  }
+
   const renderSenses = () => {
     const senses = Object.keys(monster.senses)
       .map(key => ({ type: key, value: monster.senses[key] }))
@@ -98,38 +103,34 @@ export default function MonsterDescription() {
     </dl>
 
     <dl className="d-flex gap-3">
-      {/**
-       * todo: modifiers
-       * these aren't in the API. I'll have to calculate them myself.
-       */}
       <div className="text-center">
         <dt>Str</dt>
-        <dd>{monster.strength}</dd>
+        <dd>{monster.strength} ({modifierFromAbilityScore(monster.strength)})</dd>
       </div>
 
       <div className="text-center">
         <dt>Dex</dt>
-        <dd>{monster.dexterity}</dd>
+        <dd>{monster.dexterity} ({modifierFromAbilityScore(monster.dexterity)})</dd>
       </div>
 
       <div className="text-center">
         <dt>Con</dt>
-        <dd>{monster.constitution}</dd>
+        <dd>{monster.constitution} ({modifierFromAbilityScore(monster.constitution)})</dd>
       </div>
 
       <div className="text-center">
         <dt>Int</dt>
-        <dd>{monster.intelligence}</dd>
+        <dd>{monster.intelligence} ({modifierFromAbilityScore(monster.intelligence)})</dd>
       </div>
 
       <div className="text-center">
         <dt>Wis</dt>
-        <dd>{monster.wisdom}</dd>
+        <dd>{monster.wisdom} ({modifierFromAbilityScore(monster.wisdom)})</dd>
       </div>
 
       <div className="text-center">
         <dt>Cha</dt>
-        <dd>{monster.charisma}</dd>
+        <dd>{monster.charisma} ({modifierFromAbilityScore(monster.charisma)})</dd>
       </div>
     </dl>
     
