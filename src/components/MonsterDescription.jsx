@@ -182,7 +182,6 @@ export default function MonsterDescription() {
       </div>
     </dl>
 
-    {/* todo: legendary actions */}
     {/* todo: style sections more appropriately (i.e. red borders or something) */}
 
     {/* Special Abilities */}
@@ -208,5 +207,19 @@ export default function MonsterDescription() {
         </li>
       ))}
     </ul>
+
+    {monster.legendary_actions.length > 0 && (<>
+      <h4>Legendary Actions</h4>
+      <ul className="list-unstyled">
+        {monster.legendary_actions.map(action => (
+          <li key={action.name}>
+            <p>
+              <strong>{action.name}. </strong>
+              {action.desc}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </>)}
   </>);
 }
