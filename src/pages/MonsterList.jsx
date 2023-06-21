@@ -4,9 +4,9 @@ import { useQuery } from '@apollo/client';
 import GET_MONSTERS from '../api/getMonsters';
 import MonsterTypes from '../api/static/monsterTypes';
 import ChallengeRatings from '../api/static/challengeRatings';
-import TextField from './TextField';
-import SelectField from './SelectField';
-import MonsterBrief from './MonsterBrief';
+import TextField from '../components/forms/TextField';
+import SelectField from '../components/forms/SelectField';
+import MonsterBrief from '../components/monsters/MonsterBrief';
 import { capitalize } from '../utils/text-utils';
 
 export default function MonsterList() {

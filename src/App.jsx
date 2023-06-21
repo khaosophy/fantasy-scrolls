@@ -2,12 +2,12 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SpellScroll from './components/SpellScroll';
-import HandoutMaker from './components/HandoutMaker';
-import SpellList from './components/SpellList';
-import SpellDescription from './components/SpellDescription';
-import MonsterList from './components/MonsterList';
-import MonsterDescription from './components/MonsterDescription';
+import SpellScroll from './pages/SpellScroll';
+import HandoutMaker from './pages/HandoutMaker';
+import SpellList from './pages/SpellList';
+import SpellDescription from './pages/SpellDescription';
+import MonsterList from './pages/MonsterList';
+import MonsterDescription from './pages/MonsterDescription';
 
 function App() {  
   return (<>
