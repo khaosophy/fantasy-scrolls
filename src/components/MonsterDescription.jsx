@@ -86,21 +86,29 @@ export default function MonsterDescription() {
     </>)
   }
 
+  const renderArmorClassType = () => {
+    if (monster.armor_class[0].type === 'armor') return monster.armor_class[0].armor[0].name;
+    return capitalize(`${monster.armor_class[0].type} armor`);
+  }
+
   return (<>
-    <h3>{monster.name}</h3>
+    <h3 className="mb-0">{monster.name}</h3>
     {/* todo: monster alignment */}
     <p>{capitalize(monster.size)} {capitalize(monster.type)}</p>
 
+    <hr className="stat-separator" />
+
     <dl>
-      {/* todo: AC is an array... what are some cases where it has more than one? */}
       <dt>Armor Class</dt>
-      <dd>{monster.armor_class[0].value}</dd>
+      <dd>{monster.armor_class[0].value} ({renderArmorClassType()})</dd>
 
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
 
       {renderSpeed()}
     </dl>
+
+    <hr className="stat-separator" />
 
     <dl className="d-flex gap-3">
       <div className="text-center">
@@ -133,6 +141,8 @@ export default function MonsterDescription() {
         <dd>{monster.charisma} ({modifierFromAbilityScore(monster.charisma)})</dd>
       </div>
     </dl>
+
+    <hr className="stat-separator" />
     
     <dl>
       {renderSkillsAndSaves()}
@@ -182,7 +192,7 @@ export default function MonsterDescription() {
       </div>
     </dl>
 
-    {/* todo: style sections more appropriately (i.e. red borders or something) */}
+    <hr className="stat-separator" />
 
     {/* Special Abilities */}
     {monster.special_abilities && (<>
@@ -198,7 +208,7 @@ export default function MonsterDescription() {
       </ul>
     </>)}
 
-    <h4>Actions</h4>
+    <h4 style={{ borderBottom: '1px solid #a52a2a' }}>Actions</h4>
     <ul className="list-unstyled">
       {monster.actions.map(action => (
         <li key={action.name}>
@@ -211,7 +221,7 @@ export default function MonsterDescription() {
     </ul>
 
     {monster.legendary_actions && (<>
-      <h4>Legendary Actions</h4>
+      <h4 style={{ borderBottom: '1px solid #a52a2a' }}>Legendary Actions</h4>
       <ul className="list-unstyled">
         {monster.legendary_actions.map(action => (
           <li key={action.name}>
