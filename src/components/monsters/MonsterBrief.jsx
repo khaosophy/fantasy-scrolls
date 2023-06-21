@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { capitalize } from '../utils/text-utils';
+import { capitalize } from '../../utils/text-utils';
 
 export default function MonsterBrief(props) {
   return (

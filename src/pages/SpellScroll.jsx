@@ -3,8 +3,8 @@ import { useQuery, useLazyQuery } from '@apollo/client';
 import { Helmet } from 'react-helmet';
 import GET_CLASSES from '../api/getClasses';
 import GET_SPELLS from '../api/getSpells';
-import SelectField from '../components/SelectField';
-import SpellBrief from '../components/SpellBrief';
+import SelectField from '../components/forms/SelectField';
+import SpellBrief from '../components/spells/SpellBrief';
 
 export default function SpellScroll() {
   const [isGenerated, setIsGenerated] = useState(false);
