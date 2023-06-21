@@ -86,3 +86,15 @@ footer {
 .rellanic {
   font-family: 'Rellanic';
 }
+
+/****************/
+/****** HR ******/
+/****************/
+
+hr.stat-separator {
+  border-top: solid 3px transparent;
+  border-left: solid 315px #a52a2a;
+  border-bottom: solid 3px #a52a2a;
+  border-right: solid 315px transparent;
+  opacity: 1;
+}
