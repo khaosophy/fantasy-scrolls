@@ -86,6 +86,11 @@ export default function MonsterDescription() {
     </>)
   }
 
+  const renderArmorClassType = () => {
+    if (monster.armor_class[0].type === 'armor') return monster.armor_class[0].armor[0].name;
+    return capitalize(`${monster.armor_class[0].type} armor`);
+  }
+
   return (<>
     <h3 className="mb-0">{monster.name}</h3>
     {/* todo: monster alignment */}
@@ -94,9 +99,8 @@ export default function MonsterDescription() {
     <hr className="stat-separator" />
 
     <dl>
-      {/* todo: AC is an array... what are some cases where it has more than one? */}
       <dt>Armor Class</dt>
-      <dd>{monster.armor_class[0].value}</dd>
+      <dd>{monster.armor_class[0].value} ({renderArmorClassType()})</dd>
 
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
