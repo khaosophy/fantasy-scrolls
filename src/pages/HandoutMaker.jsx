@@ -3,9 +3,9 @@ import { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 // import { BsInfoCircle as InfoCircle } from 'react-icons/bs';
 import downloadImage from '../utils/downloadImage';
-import NumberField from './NumberField';
-import ScrollPreview  from './ScrollPreview';
-import SelectField from './SelectField';
+import NumberField from '../components/NumberField';
+import ScrollPreview  from '../components/ScrollPreview';
+import SelectField from '../components/SelectField';
 // import InstructionsModal from '../components/InstructionsModal';
 
 export default function HandoutMaker() {

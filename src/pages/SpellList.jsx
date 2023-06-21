@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useQuery } from '@apollo/client';
-import TextField from './TextField';
+import TextField from '../components/TextField';
 import GET_SPELLS from '../api/getSpells';
 import GET_SCHOOLS from '../api/getSchools';
 import GET_CLASSES from '../api/getClasses';
-import SpellBrief from './SpellBrief';
-import SelectField from './SelectField';
+import SpellBrief from '../components/SpellBrief';
+import SelectField from '../components/SelectField';
 
 export default function SpellList () {
   const [searchQuery, setSearchQuery] = useState('');

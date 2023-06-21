@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import GET_SPELL from '../api/getSpell';
-import SpellCard from './SpellCard'; 
+import SpellCard from '../components/SpellCard'; 
 
 export default function SpellDescription() {
   const { spell: index } = useParams();
