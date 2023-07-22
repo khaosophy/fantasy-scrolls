@@ -12,7 +12,6 @@ export default function MonsterDescription() {
 
   if(!data) return false;
   const { monster } = data;
-  console.log(monster);
 
   const modifierFromAbilityScore = (abilityScore) => {
     const mod = Math.floor((abilityScore - 10) / 2);
@@ -76,7 +75,7 @@ export default function MonsterDescription() {
       <dt>Speed</dt>
       <dd>
         {monster.speed.walk}
-        {nonWalkSpeeds.length > 0 && ', '}
+        {(nonWalkSpeeds.length > 0 && monster.speed.walk) && ', '} {/* if there is a walk speed and nonwalk speeds, display comma */}
         {nonWalkSpeeds.map((speed, i) => (
           (i < nonWalkSpeeds.length - 1)
             ? `${speed.type} ${speed.value}, `
