@@ -5,88 +5,10 @@ const GET_MONSTER = gql`
     monster(index: $index) {
       index
       name
-      desc
       alignment
       actions {
-        action_options {
-          choose
-          type
-          from {
-            option_set_type
-          }
-        }
-        actions {
-          action_name
-          count
-          type
-        }
         name
-        multiattack_type
-        attack_bonus
-        attacks {
-          damage {
-            damage_dice
-          }
-          name
-        }
-        damage {
-          damage_dice
-          damage_type {
-            index
-            name
-            desc
-          }
-          choose
-          type
-          from {
-            option_set_type
-            options {
-              option_type
-              damage_dice
-              notes
-            }
-          }
-        }
         desc
-        dc {
-          type {
-            index
-            name
-            full_name
-            desc
-            skills {
-              index
-              name
-              desc
-              ability_score {
-                index
-                name
-                full_name
-                desc
-              }
-            }
-          }
-          value
-          success
-        }
-        options {
-          choose
-          type
-          from {
-            option_set_type
-            options {
-              option_type
-              name
-            }
-          }
-        }
-        usage {
-          type
-          times
-          rest_types
-          dice
-          min_value
-        }
       }
       armor_class {
         type
@@ -302,75 +224,6 @@ const GET_MONSTER = gql`
       damage_resistances
       damage_vulnerabilities
       dexterity
-      forms {
-        index
-        name
-        desc
-        actions {
-          action_options {
-            choose
-            type
-            from {
-              option_set_type
-            }
-          }
-          actions {
-            action_name
-            count
-            type
-          }
-          name
-          multiattack_type
-          attack_bonus
-          attacks {
-            name
-          }
-          damage {
-            damage_dice
-            choose
-            type
-            from {
-              option_set_type
-              options {
-                option_type
-                damage_dice
-                notes
-              }
-            }
-          }
-          desc
-          options {
-            choose
-            type
-            from {
-              option_set_type
-              options {
-                option_type
-                name
-              }
-            }
-          }
-        }
-        challenge_rating
-        charisma
-        constitution
-        damage_immunities
-        damage_resistances
-        damage_vulnerabilities
-        dexterity
-        hit_dice
-        hit_points
-        hit_points_roll
-        intelligence
-        languages
-        size
-        strength
-        subtype
-        type
-        wisdom
-        xp
-        image
-      }
       hit_dice
       hit_points
       hit_points_roll
@@ -379,35 +232,6 @@ const GET_MONSTER = gql`
       legendary_actions {
         name
         desc
-        dc {
-          type {
-            index
-            name
-            full_name
-            desc
-            skills {
-              index
-              name
-              desc
-              ability_score {
-                index
-                name
-                full_name
-                desc
-              }
-            }
-          }
-          value
-          success
-        }
-        damage {
-          damage_dice
-          damage_type {
-            index
-            name
-            desc
-          }
-        }
       }
       proficiencies {
         proficiency {
@@ -432,30 +256,6 @@ const GET_MONSTER = gql`
       special_abilities {
         name
         desc
-        usage {
-          type
-          times
-          rest_types
-          dice
-          min_value
-        }
-        spellcasting {
-          level
-          ability {
-            index
-            name
-            full_name
-            desc
-          }
-          dc
-          modifier
-          components_required
-          school
-          slots {
-            level
-            slots
-          }
-        }
       }
       speed {
         burrow
@@ -470,7 +270,6 @@ const GET_MONSTER = gql`
       type
       wisdom
       xp
-      image
     }
   }
 `;
