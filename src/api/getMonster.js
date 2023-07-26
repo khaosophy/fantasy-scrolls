@@ -6,7 +6,7 @@ const GET_MONSTER = gql`
       index
       name
       desc
-
+      alignment
       actions {
         action_options {
           choose

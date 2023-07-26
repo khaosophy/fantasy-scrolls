@@ -92,8 +92,7 @@ export default function MonsterDescription() {
 
   return (<>
     <h3 className="mb-0">{monster.name}</h3>
-    {/* todo: monster alignment */}
-    <p>{capitalize(monster.size)} {capitalize(monster.type)}</p>
+    <p>{capitalize(monster.size)} {capitalize(monster.type)}, {monster.alignment}</p>
 
     <hr className="stat-separator" />
 
