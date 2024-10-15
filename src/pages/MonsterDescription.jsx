@@ -85,9 +85,11 @@ export default function MonsterDescription() {
     </>)
   }
 
-  const renderArmorClassType = () => {
-    if (monster.armor_class[0].type === 'armor') return monster.armor_class[0].armor[0].name;
-    return capitalize(`${monster.armor_class[0].type} armor`);
+  const renderArmorClassValue = () => {
+    const { type, value } = monster.armor_class[0];
+    if (type === 'dex') return value;
+    if (type === 'armor') return `${value} (${monster.armor_class[0].armor[0].name})`;
+    return `${value} (${capitalize(`${type} armor`)})`;
   }
 
   return (<>
@@ -98,7 +100,7 @@ export default function MonsterDescription() {
 
     <dl>
       <dt>Armor Class</dt>
-      <dd>{monster.armor_class[0].value} ({renderArmorClassType()})</dd>
+      <dd>{renderArmorClassValue()}</dd>
 
       <dt>Hit Points</dt>
       <dd>{monster.hit_points} ({monster.hit_points_roll})</dd>
